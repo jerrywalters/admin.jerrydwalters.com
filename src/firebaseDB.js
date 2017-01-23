@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { addNewMessage, addConversation } from './actions';
+import { addNewMessage, addConversation, addMessageToConversation } from './actions';
 import store from './index';
 
 // Initialize Firebase
@@ -17,9 +17,16 @@ const db = firebase.database();
 
 db.ref('conversations').on('child_added', function(data) {
   const conversation = data.val();
-  console.log('dbconversation:', conversation);
-  // const conversationId = conversation.conversationId;
+  const conversationId = conversation.conversationId;
+  conversation.messages = [];
   store.dispatch(addConversation(conversation));
+  db.ref('messages')
+    .orderByChild('conversationId')
+    .equalTo(conversationId)
+    .on('child_added', function(data) {
+      const message = data.val();
+      store.dispatch(addMessageToConversation(message));
+    });
 });
 
 // db.ref('messages')

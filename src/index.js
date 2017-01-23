@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from './store'
 import App from './components/App/App';
 import './index.css';
-import firebaseDb from './firebaseDb'
+import firebaseDb from './firebaseDb';
 
 const store = configureStore();
 
