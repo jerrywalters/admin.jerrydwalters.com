@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../App.css';
 
-import ChatContainer from '../Conversation/ChatContainer'
+import ConversationListContainer from '../Conversation/ConversationListContainer'
 
 const App = () => (
   <div className="App">
-    <ChatContainer />
+    <ConversationListContainer />
   </div>
 )
 
