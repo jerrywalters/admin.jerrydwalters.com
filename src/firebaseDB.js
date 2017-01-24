@@ -14,7 +14,10 @@ firebase.initializeApp(config);
 
 // db stuff
 const db = firebase.database();
+// conversation ref should have "last messages prop"
+// create that and set conversation.lastMessage = messages.message[0] -- or last in array, not first. idk
 
+// whenever conversation is added populate it with messages
 db.ref('conversations').on('child_added', function(data) {
   const conversation = data.val();
   const conversationId = conversation.conversationId;

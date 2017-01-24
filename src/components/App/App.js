@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../../App.css';
 
-import ConversationListContainer from '../Conversation/ConversationListContainer'
+// import ConversationListContainer from '../Conversation/ConversationListContainer'
 
-const App = () => (
-  <div className="App">
-    <ConversationListContainer />
-  </div>
-)
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 export default App;
