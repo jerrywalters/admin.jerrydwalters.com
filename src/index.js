@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router'
 import { configureStore } from './store'
 import './index.css';
+
+// db and auth
 import firebaseDb from './firebaseDb';
+import { isAuthenticated, requireAuth } from './firebaseAuth';
 
 // load up components for routes
 import App from './components/App/App';
@@ -20,9 +23,10 @@ render(
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRedirect to='signin' />
-        <Route path='signin' component={SignIn} />
-        <Route path='admin' component={Admin}>
-          <IndexRoute component={ConversationListContainer} />
+        <Route path='signin' component={SignIn} onEnter={isAuthenticated} />
+        <Route path='admin' component={Admin} onEnter={requireAuth}>
+          <IndexRedirect to='conversations' />
+          <Route path='conversations' component={ConversationListContainer} onEnter={requireAuth} />
         </Route>
       </Route>
     </Router>
