@@ -13,7 +13,8 @@ import { isAuthenticated, requireAuth } from './firebaseAuth';
 import App from './components/App/App';
 import SignIn from './components/SignIn/SignIn';
 import Admin from './components/Admin/Admin';
-import ConversationListContainer from './components/Conversation/ConversationListContainer'
+import ConversationListContainer from './components/Conversation/ConversationListContainer';
+import ConversationContainer from './components/Conversation/ConversationContainer';
 
 const store = configureStore();
 const mountApp = document.getElementById('root');
@@ -27,6 +28,7 @@ render(
         <Route path='admin' component={Admin} onEnter={requireAuth}>
           <IndexRedirect to='conversations' />
           <Route path='conversations' component={ConversationListContainer} onEnter={requireAuth} />
+          <Route path='conversations/:id' component={ConversationContainer} onEnter={requireAuth} />
         </Route>
       </Route>
     </Router>

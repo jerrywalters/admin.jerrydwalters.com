@@ -1,18 +1,18 @@
 import React from 'react';
 import { signOut } from '../../firebaseAuth';
+import ConversationCard from './ConversationCard';
 
 const ConversationList = ({conversations}) => {
-  console.log('conversationscontainer:', conversations)
-  let conversationList = conversations.map(
-    (conversation, index) => <li key={index}>{conversation.conversationId}</li>
-  )
+
+  const convoList = conversations
+    .map((conversation, index) => <ConversationCard key={index} conversation={conversation}/>);
 
   return (
     <div>
       <ul>
-        {conversationList}
-        <button onClick={()=>signOut()}>sign out</button>
+        {convoList}
       </ul>
+      <button onClick={()=>signOut()}>sign out</button>
     </div>
   )
 }
