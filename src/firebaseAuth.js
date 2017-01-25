@@ -42,27 +42,3 @@ export function isAuthenticated(nextState, replace, callback){
     }
   });
 }
-
-// why dont these work?
-// check to see if you're signed in, if so, push to admin
-// export function isAuthenticated(nextState, replace) {
-//   firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-//       return true
-//     } else {
-//       return false
-//     }
-//   });
-// }
-// check to see if signed in, if not redirect to login
-// export function requireAuth(nextState, replace) {
-//     if (isAuthenticated === false) {
-//       replace({
-//         pathname: '/signin'
-//       })
-//     } else if (isAuthenticated === true){
-//       replace({
-//         pathname: '/admin'
-//       })
-//     }
-// }
