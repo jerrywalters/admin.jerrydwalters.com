@@ -11,7 +11,7 @@ const Conversation = ({ params, sendMessage, conversations }) => {
     console.log('thisconvo:', thisConversation)
     if(typeof thisConversation !== "undefined") {
       messageList = thisConversation.messages.map(
-        (message, index) => <li key={index}>{message.message} </li>
+        (message, index) => <li key={index}>{message.author + ': ' + message.message}</li>
       )
     }
   }
