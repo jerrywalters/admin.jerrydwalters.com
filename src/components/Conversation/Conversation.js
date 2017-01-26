@@ -29,14 +29,6 @@ const Conversation = ({ params, sendMessage, conversations }) => {
   function backToAdmin() {
     browserHistory.push('/admin')
   }
-  // routes you to particular conversation
-  // function navigateToConvo(id) {
-  //   browserHistory.push(`/admin/conversations/${id}`);
-  // }
-  // list of conversations by id
-  // let conversationList = conversations.map(
-  //   (conversation, index) => <li key={index}>{conversation.conversationId}</li>
-  // )
 
   return (
     <div>
