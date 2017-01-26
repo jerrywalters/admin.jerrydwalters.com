@@ -14,15 +14,22 @@ firebase.initializeApp(config);
 
 // db stuff
 const db = firebase.database();
-// conversation ref should have "last messages prop"
-// create that and set conversation.lastMessage = messages.message[0] -- or last in array, not first. idk
 
-// whenever conversation is added populate it with messages
+// add conversations to state
 db.ref('conversations').on('child_added', function(data) {
   const conversation = data.val();
   const conversationId = conversation.conversationId;
+
+  // remind me to figure out why this is necessary
   conversation.messages = [];
+
+  // check for blank objects
+  // without this admin would load blank conversations with 'isUncleOnline:true'
+  if (typeof conversation.conversationId === 'undefined'){return;}
+
   store.dispatch(addConversation(conversation));
+
+  // add messages to conversations state via addMessageToConversation
   db.ref('messages')
     .orderByChild('conversationId')
     .equalTo(conversationId)
@@ -30,15 +37,14 @@ db.ref('conversations').on('child_added', function(data) {
       const message = data.val();
       store.dispatch(addMessageToConversation(message));
     });
+    var convoRef = db.ref('conversations/'+conversationId);
+    convoRef.update({
+     isUncleOnline: true
+    })
+    convoRef.onDisconnect().update({
+     isUncleOnline: false
+    })
 });
-
-// db.ref('messages')
-//   .orderByChild('conversationId')
-//   .equalTo(userId)
-//   .on('child_added', function(data) {
-//     const message = data.val();
-//     store.dispatch(addNewMessage(message));
-//    });
 
 
 export default db;

@@ -11,7 +11,6 @@ const Conversation = ({ params, sendMessage, conversations }) => {
     // get the index of the conversation matching this convo id (found in route params)
     const conversationPos = conversations.findIndex(convo => convo.conversationId === conversationId );
     const thisConversation = conversations[conversationPos];
-    console.log('thisconvo:', thisConversation)
     if(typeof thisConversation !== "undefined") {
       messageList = thisConversation.messages.map(
         (message, index) => <li key={index}>{message.author + ': ' + message.message}</li>
