@@ -6,3 +6,9 @@ body {
 .chat-window {
   padding: 2rem;
 }
+.container {
+  display: flex;
+}
+.test {
+
+}

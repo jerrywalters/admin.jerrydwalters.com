@@ -30,16 +30,18 @@ const Conversation = ({ params, sendMessage, conversations }) => {
   }
 
   return (
-    <div>
-      <ul>
-        {messageList}
-      </ul>
-      <form onSubmit={(e) => chatSubmit(e)}>
-        <input id="chat__input" type="text"></input>
-        <input type="submit" ></input>
-      </form>
-      <button onClick={e => backToAdmin(e)}>back</button>
+    <div className="container">
       <ConversationListContainer />
+      <div className="test">
+        <ul>
+          {messageList}
+        </ul>
+        <form onSubmit={(e) => chatSubmit(e)}>
+          <input id="chat__input" type="text"></input>
+          <input type="submit" ></input>
+        </form>
+        <button onClick={e => backToAdmin(e)}>back</button>
+      </div>
     </div>
   )
 }
