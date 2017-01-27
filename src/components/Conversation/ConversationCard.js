@@ -13,12 +13,12 @@ const ConversationCard = ({conversation}) => {
   function navigateToConvo(id) {
     browserHistory.push(`/admin/conversations/${id}`);
   }
-  console.log(userName, isOnline)
+
   return (
     <li onClick={()=>navigateToConvo(conversationId)}>
       <p>{userName}</p>
       <p>online:{(isOnline === true) ? 'online' : 'offline'}</p>
-      <p>last message:{lastMessage} by: {author} </p>
+      <p>last message:{lastMessage} by: {author}</p>
       <p>at: {lastChatTime}</p>
     </li>
   )

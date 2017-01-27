@@ -46,6 +46,7 @@ db.ref('conversations').on('child_changed', function(data) {
   let conversationId = conversation.conversationId;
   let isNephewOnline = conversation.isNephewOnline;
   store.dispatch(updateConversation(isNephewOnline, conversationId))
+  checkOnline(conversationId);
 });
 
 function checkOnline(conversationId) {
