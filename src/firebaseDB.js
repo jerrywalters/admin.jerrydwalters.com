@@ -22,7 +22,6 @@ db.ref('conversations').on('child_added', function(data) {
   const conversationId = conversation.conversationId;
   // remind me to figure out why this is necessary
   conversation.messages = [];
-
   // check for blank objects
   // without this admin would load blank conversations with 'isUncleOnline:true'
   if (typeof conversation.conversationId === 'undefined'){return;}
@@ -39,6 +38,7 @@ db.ref('conversations').on('child_added', function(data) {
       const lastChat = Date.now();
       store.dispatch(addMessageToConversation(message, lastChat));
     });
+    checkOnline(conversationId);
 });
 
 db.ref('conversations').on('child_changed', function(data) {
@@ -47,6 +47,16 @@ db.ref('conversations').on('child_changed', function(data) {
   let isNephewOnline = conversation.isNephewOnline;
   store.dispatch(updateConversation(isNephewOnline, conversationId))
 });
+
+function checkOnline(conversationId) {
+  let convoRef = db.ref('conversations/' + conversationId);
+  convoRef.update({
+    isUncleOnline: true
+  })
+  convoRef.onDisconnect().update({
+    isUncleOnline: false
+  });
+}
 
 
 export default db;
