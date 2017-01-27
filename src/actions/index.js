@@ -2,8 +2,9 @@ import firebaseDb from '../firebaseDb';
 
 export const SEND__MESSAGE = 'SEND__MESSAGE';
 // export const ADD__NEW__MESSAGE = 'ADD__NEW__MESSAGE';
-export const ADD__CONVERSATION = 'ADD__CONVERSATION'
-export const ADD__MESSAGE__TO__CONVERSATION = 'ADD__MESSAGE__TO__CONVERSATION'
+export const ADD__CONVERSATION = 'ADD__CONVERSATION';
+export const ADD__MESSAGE__TO__CONVERSATION = 'ADD__MESSAGE__TO__CONVERSATION';
+export const UPDATE__CONVERSATION = 'UPDATE__CONVERSATION';
 
 export function addConversation(conversation) {
   return {
@@ -16,6 +17,14 @@ export function addMessageToConversation(message) {
   return {
     type: ADD__MESSAGE__TO__CONVERSATION,
     message
+  }
+}
+
+export function updateConversation(isNephewOnline, conversationId) {
+  return {
+    type: UPDATE__CONVERSATION,
+    isNephewOnline,
+    conversationId
   }
 }
 

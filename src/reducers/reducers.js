@@ -1,4 +1,4 @@
-import { ADD__CONVERSATION, ADD__MESSAGE__TO__CONVERSATION } from '../actions'
+import { ADD__CONVERSATION, ADD__MESSAGE__TO__CONVERSATION, UPDATE__CONVERSATION } from '../actions'
 
 const rootReducer = (state = {}, action) => {
   switch (action.type) {
@@ -20,6 +20,20 @@ const rootReducer = (state = {}, action) => {
             ...state.conversations.slice(conversationIndex + 1)
           ]
         });
+      case UPDATE__CONVERSATION:
+        // TODO: remind me to refactor this shit into a function after i get a remote job
+        const conversationId = action.conversationId;
+        const convoIndex = state.conversations.findIndex(conversation => conversation.conversationId === conversationId);
+        const previousConversation = state.conversations[convoIndex];
+        return Object.assign({}, state, {
+          conversations: [
+            ...state.conversations.slice(0, convoIndex),
+            Object.assign({}, previousConversation, {
+              isNephewOnline: action.isNephewOnline
+            }),
+            ...state.conversations.slice(convoIndex + 1)
+          ]
+        })
    default:
     return state;
   }

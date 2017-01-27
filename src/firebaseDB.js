@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { addNewMessage, addConversation, addMessageToConversation } from './actions';
+import { addNewMessage, addConversation, addMessageToConversation, updateConversation } from './actions';
 import store from './index';
 
 // Initialize Firebase
@@ -16,10 +16,10 @@ firebase.initializeApp(config);
 const db = firebase.database();
 
 // add conversations to state
+
 db.ref('conversations').on('child_added', function(data) {
   const conversation = data.val();
   const conversationId = conversation.conversationId;
-
   // remind me to figure out why this is necessary
   conversation.messages = [];
 
@@ -27,6 +27,15 @@ db.ref('conversations').on('child_added', function(data) {
   // without this admin would load blank conversations with 'isUncleOnline:true'
   if (typeof conversation.conversationId === 'undefined'){return;}
 
+  var convoRef = db.ref('conversations/'+conversationId);
+  convoRef.update({
+   isUncleOnline: true
+  })
+  convoRef.onDisconnect().update({
+   isUncleOnline: false
+  })
+
+  console.log('updating m')
   store.dispatch(addConversation(conversation));
 
   // add messages to conversations state via addMessageToConversation
@@ -37,13 +46,13 @@ db.ref('conversations').on('child_added', function(data) {
       const message = data.val();
       store.dispatch(addMessageToConversation(message));
     });
-    var convoRef = db.ref('conversations/'+conversationId);
-    convoRef.update({
-     isUncleOnline: true
-    })
-    convoRef.onDisconnect().update({
-     isUncleOnline: false
-    })
+});
+
+db.ref('conversations').on('child_changed', function(data) {
+  const conversation = data.val();
+  let conversationId = conversation.conversationId;
+  let isNephewOnline = conversation.isNephewOnline;
+  store.dispatch(updateConversation(isNephewOnline, conversationId))
 });
 
 
