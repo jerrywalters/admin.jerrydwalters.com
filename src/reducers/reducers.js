@@ -15,7 +15,8 @@ const rootReducer = (state = {}, action) => {
           conversations: [
             ...state.conversations.slice(0, conversationIndex),
             Object.assign({}, prevConversation, {
-              messages: [...prevConversation.messages, action.message]
+              messages: [...prevConversation.messages, action.message],
+              lastChat: action.lastChat
             }),
             ...state.conversations.slice(conversationIndex + 1)
           ]

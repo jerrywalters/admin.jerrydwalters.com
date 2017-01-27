@@ -13,13 +13,15 @@ export function addConversation(conversation) {
   }
 }
 
-export function addMessageToConversation(message) {
+export function addMessageToConversation(message, lastChat) {
   return {
     type: ADD__MESSAGE__TO__CONVERSATION,
-    message
+    message,
+    lastChat
   }
 }
 
+// TODO: rename this action to make sense, "updateConnection"
 export function updateConversation(isNephewOnline, conversationId) {
   return {
     type: UPDATE__CONVERSATION,
