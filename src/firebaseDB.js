@@ -38,7 +38,7 @@ db.ref('conversations').on('child_added', function(data) {
       const lastChat = Date.now();
       store.dispatch(addMessageToConversation(message, lastChat));
     });
-    checkOnline(conversationId);
+    checkOnline(conversationId);  
 });
 
 db.ref('conversations').on('child_changed', function(data) {

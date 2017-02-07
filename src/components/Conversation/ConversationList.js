@@ -1,5 +1,4 @@
 import React from 'react';
-import { signOut } from '../../firebaseAuth';
 import ConversationCard from './ConversationCard';
 
 const ConversationList = ({conversations}) => {
@@ -8,11 +7,10 @@ const ConversationList = ({conversations}) => {
     .map((conversation, index) => <ConversationCard key={index} conversation={conversation}/>);
 
   return (
-    <div>
-      <ul>
+    <div className="sidebar">
+      <ul className="conversation-list">
         {convoList}
       </ul>
-      <button onClick={()=>signOut()}>sign out</button>
     </div>
   )
 }

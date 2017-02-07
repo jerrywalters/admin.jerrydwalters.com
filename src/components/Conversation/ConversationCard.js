@@ -15,11 +15,15 @@ const ConversationCard = ({conversation}) => {
   }
 
   return (
-    <li onClick={()=>navigateToConvo(conversationId)}>
-      <p>{userName}</p>
-      <p>online:{(isOnline === true) ? 'online' : 'offline'}</p>
-      <p>last message:{lastMessage} by: {author}</p>
-      <p>at: {lastChatTime}</p>
+    <li className="conversation-item" onClick={()=>navigateToConvo(conversationId)}>
+      <div className="conversation-item__info">
+        <div className="conversation-item__pic"></div>
+        <h3 className="conversation-item__name">{userName}</h3>
+        <p className="conversation-item__date">{(isOnline === true) ? 'online' : 'offline'}</p>
+      </div>
+      <div className="conversation-item__message">
+          <p>{lastMessage}</p>
+      </div>
     </li>
   )
 }
