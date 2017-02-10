@@ -1,5 +1,6 @@
 import React from 'react';
-import { browserHistory } from 'react-router'
+import classNames from 'classnames';
+import { browserHistory } from 'react-router';
 
 const ConversationCard = ({conversation}) => {
   const messages = conversation.messages[conversation.messages.length-1];
@@ -10,6 +11,12 @@ const ConversationCard = ({conversation}) => {
   const isOnline = conversation.isNephewOnline;
   const lastChatTime = new Date(conversation.lastChat).toString('yyyy-MM-dd');
 
+  const statusClasses = classNames({
+    'conversation-item__status' : true,
+    'conversation-item__status--online' : isOnline,
+    'conversation-item__status--offline' : !isOnline
+  })
+
   function navigateToConvo(id) {
     browserHistory.push(`/admin/conversations/${id}`);
   }
@@ -19,7 +26,7 @@ const ConversationCard = ({conversation}) => {
       <div className="conversation-item__info">
         <div className="conversation-item__pic"></div>
         <h3 className="conversation-item__name">{userName}</h3>
-        <p className="conversation-item__date">{(isOnline === true) ? 'online' : 'offline'}</p>
+        <span className={statusClasses}></span>
       </div>
       <div className="conversation-item__message">
           <p>{lastMessage}</p>
