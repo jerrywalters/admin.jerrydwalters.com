@@ -1,7 +1,6 @@
 import firebaseDb from '../firebaseDb';
 
 export const SEND__MESSAGE = 'SEND__MESSAGE';
-// export const ADD__NEW__MESSAGE = 'ADD__NEW__MESSAGE';
 export const ADD__CONVERSATION = 'ADD__CONVERSATION';
 export const ADD__MESSAGE__TO__CONVERSATION = 'ADD__MESSAGE__TO__CONVERSATION';
 export const UPDATE__CONVERSATION = 'UPDATE__CONVERSATION';
@@ -43,24 +42,3 @@ export function sendMessage(message, conversationId) {
     type: SEND__MESSAGE
   }
 }
-// export function addNewMessage(message){
-//   return {
-//     type: ADD__NEW__MESSAGE,
-//     message,
-//   }
-// }
-//
-// // pushes message to firebase
-// export function sendMessage(message) {
-//   firebaseDB.ref('messages').push({
-//     message,
-//     author: 'uncle',
-//     conversationId: getUserId(),
-//     createdOn: Date.now(),
-//   }, function(){
-//     console.log('success');
-//   })
-//   return {
-//     type: SEND__MESSAGE
-//   }
-// }

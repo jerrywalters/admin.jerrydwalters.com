@@ -32,12 +32,19 @@ export default class Conversation extends Component {
       }
     }
     // on submit push the value of the input as a message to db via sendMessage action
-    function chatSubmit(e) {
+
+    function chatSubmit(e){
       e.preventDefault();
-      const input = document.getElementById('chat__input').value;
-      sendMessage(input, conversationId);
-      document.getElementById('chat__input').value = '';
+      const input = document.getElementById('chat__input').value.trim();
+      if(!input || input === ' ') {
+        document.getElementById('chat__input').value = '';
+        return
+      } else {
+        sendMessage(input, conversationId);
+        document.getElementById('chat__input').value = '';
+      }
     }
+
     // routes you back to admin panel
     function backToAdmin() {
       browserHistory.push('/admin')
@@ -59,7 +66,7 @@ export default class Conversation extends Component {
             {messageList}
           </ul>
           <form className ="chat-form" onSubmit={(e) => chatSubmit(e)}>
-            <input className="chat-form__input" id="chat__input" type="text"></input>
+            <input className="chat-form__input" id="chat__input" type="text" autoComplete="off"></input>
             <input className="chat-form__submit" type="submit" ></input>
           </form>
         </section>
