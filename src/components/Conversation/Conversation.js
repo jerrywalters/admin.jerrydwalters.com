@@ -36,7 +36,7 @@ export default class Conversation extends Component {
     function chatSubmit(e){
       e.preventDefault();
       const input = document.getElementById('chat__input').value.trim();
-      if(!input || input === ' ') {
+      if(!input) {
         document.getElementById('chat__input').value = '';
         return
       } else {
