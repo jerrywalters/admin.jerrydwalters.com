@@ -26,6 +26,7 @@ export default class Conversation extends Component {
       const thisConversation = conversations[conversationPos];
       if(typeof thisConversation !== "undefined") {
         var userName = thisConversation.name;
+        var isTyping = thisConversation.clientIsTyping;
         messageList = thisConversation.messages.map(
           (message, index) => <li className={`message-list__item message-list__item--${message.author}`} key={index}>{message.message}</li>
         )
@@ -64,6 +65,7 @@ export default class Conversation extends Component {
           </header>
           <ul className="message-list">
             {messageList}
+            typing: {isTyping ? 'typing' : 'not typing' }
           </ul>
           <form className ="chat-form" onSubmit={(e) => chatSubmit(e)}>
             <input className="chat-form__input" id="chat__input" type="text" autoComplete="off"></input>

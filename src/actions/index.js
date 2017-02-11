@@ -20,12 +20,12 @@ export function addMessageToConversation(message, lastChat) {
   }
 }
 
-// TODO: rename this action to make sense, "updateConnection"
-export function updateConversation(isNephewOnline, conversationId) {
+export function updateConversation(conversationId, isNephewOnline, clientIsTyping) {
   return {
     type: UPDATE__CONVERSATION,
+    conversationId,
     isNephewOnline,
-    conversationId
+    clientIsTyping
   }
 }
 
