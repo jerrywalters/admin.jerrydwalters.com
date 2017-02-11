@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { sendMessage } from '../../actions/';
+import { sendMessage, updateIsTyping } from '../../actions/';
 import Conversation from './Conversation';
 
 const mapStateToProps = (state) => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     sendMessage: (message, conversationId) => {
       dispatch(sendMessage(message, conversationId));
+    },
+    updateIsTyping: (conversationId, typing) => {
+      dispatch(updateIsTyping(conversationId, typing));
     }
   }
 }

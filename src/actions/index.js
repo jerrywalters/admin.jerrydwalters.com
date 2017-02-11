@@ -4,6 +4,7 @@ export const SEND__MESSAGE = 'SEND__MESSAGE';
 export const ADD__CONVERSATION = 'ADD__CONVERSATION';
 export const ADD__MESSAGE__TO__CONVERSATION = 'ADD__MESSAGE__TO__CONVERSATION';
 export const UPDATE__CONVERSATION = 'UPDATE__CONVERSATION';
+export const UPDATE__IS__TYPING = 'UPDATE__IS__TYPING';
 
 export function addConversation(conversation) {
   return {
@@ -26,6 +27,15 @@ export function updateConversation(conversationId, isNephewOnline, clientIsTypin
     conversationId,
     isNephewOnline,
     clientIsTyping
+  }
+}
+
+export function updateIsTyping(conversationId, typing){
+  firebaseDb.ref(`conversations/${conversationId}`).update({
+    uncleIsTyping: typing
+  });
+  return {
+    type: UPDATE__IS__TYPING,
   }
 }
 

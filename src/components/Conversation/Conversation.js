@@ -16,8 +16,9 @@ export default class Conversation extends Component {
   }
 
   render() {
-    const { params, sendMessage, conversations } = this.props;
+    const { params, conversations, sendMessage, updateIsTyping } = this.props;
     const conversationId = params.id;
+    let isTypingTimeout;
     let messageList = [];
     // conditional necessary because otherwise conversations is initially undefined, breaking it
     if(typeof conversations !== "undefined") {
@@ -50,6 +51,15 @@ export default class Conversation extends Component {
     function backToAdmin() {
       browserHistory.push('/admin')
     }
+    
+    function isUncleTyping() {
+      if (isTypingTimeout !== undefined) clearTimeout(isTypingTimeout);
+      updateIsTyping(conversationId, true);
+      console.log('is typing')
+      isTypingTimeout = setTimeout(function() {
+        updateIsTyping(conversationId, false);
+      }, 2000);
+    }
 
   return (
     <div>
@@ -68,7 +78,11 @@ export default class Conversation extends Component {
             typing: {isTyping ? 'typing' : 'not typing' }
           </ul>
           <form className ="chat-form" onSubmit={(e) => chatSubmit(e)}>
-            <input className="chat-form__input" id="chat__input" type="text" autoComplete="off"></input>
+            <input className="chat-form__input" 
+                   id="chat__input" 
+                   type="text" 
+                   autoComplete="off" 
+                   onKeyPress={()=>isUncleTyping()}></input>
             <input className="chat-form__submit" type="submit" ></input>
           </form>
         </section>
