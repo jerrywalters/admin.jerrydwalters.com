@@ -3,6 +3,9 @@ import { browserHistory } from 'react-router';
 import { signOut } from '../../firebaseAuth';
 import ConversationListContainer from './ConversationListContainer'
 
+// for some reason this only works when I define isTypingTimeout here
+var isTypingTimeout;
+
 export default class Conversation extends Component {
   constructor(props){
     super(props)
@@ -18,7 +21,17 @@ export default class Conversation extends Component {
   render() {
     const { params, conversations, sendMessage, updateIsTyping } = this.props;
     const conversationId = params.id;
-    let isTypingTimeout;
+
+
+    function isUncleTyping() {
+      if (isTypingTimeout !== undefined) clearTimeout(isTypingTimeout);
+      updateIsTyping(conversationId, true);
+      isTypingTimeout = setTimeout(function() {
+        updateIsTyping(conversationId, false);
+      }, 3000);
+    }
+
+
     let messageList = [];
     // conditional necessary because otherwise conversations is initially undefined, breaking it
     if(typeof conversations !== "undefined") {
@@ -43,6 +56,8 @@ export default class Conversation extends Component {
         return
       } else {
         sendMessage(input, conversationId);
+        // clearTimeout(isTypingTimeout)
+        updateIsTyping(conversationId, false);
         document.getElementById('chat__input').value = '';
       }
     }
@@ -50,15 +65,6 @@ export default class Conversation extends Component {
     // routes you back to admin panel
     function backToAdmin() {
       browserHistory.push('/admin')
-    }
-    
-    function isUncleTyping() {
-      if (isTypingTimeout !== undefined) clearTimeout(isTypingTimeout);
-      updateIsTyping(conversationId, true);
-      console.log('is typing')
-      isTypingTimeout = setTimeout(function() {
-        updateIsTyping(conversationId, false);
-      }, 2000);
     }
 
   return (

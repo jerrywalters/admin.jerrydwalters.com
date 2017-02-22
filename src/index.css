@@ -51,6 +51,50 @@ table {
 
 /* STYLES */
 
+/* Sign In */
+.sign-in {
+    font-family: 'Roboto', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+}
+.sign-in__button {
+    background-color: #4285F4;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.sign-in__button:hover {
+    background-color: #3367D6;
+}
+.sign-in__text {
+    margin-right: .9rem;
+}
+.google-logo__img {
+    height: 24px;
+    width: 24px;
+}
+.google-logo__container {
+    background-color: #fff;
+    border-radius: 2px;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem; 
+}
+
 /* HEADER */
 
 .admin-header {

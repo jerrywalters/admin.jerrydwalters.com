@@ -2,6 +2,8 @@ import React from 'react';
 import { signIn } from '../../firebaseAuth';
 import { browserHistory } from 'react-router'
 
+import googleLogo from '../../images/google_logo.svg';
+
 const SignIn = () => {
   function login(){
     signIn(function(data){
@@ -9,8 +11,13 @@ const SignIn = () => {
     });
   }
   return (
-    <div>
-      <button onClick={()=>login()}>Sign In</button>
+    <div className="sign-in">
+      <button className="sign-in__button" onClick={()=>login()}>
+        <div className="google-logo__container">
+          <img className="google-logo__img" src={googleLogo} />
+        </div>
+        <span className="sign-in__text">Sign in with Google</span>
+      </button>
     </div>
   )
 }
