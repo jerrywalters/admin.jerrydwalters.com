@@ -42,7 +42,21 @@ export default class Conversation extends Component {
         var userName = thisConversation.name;
         var isTyping = thisConversation.clientIsTyping;
         messageList = thisConversation.messages.map(
-          (message, index) => <li className={`message-list__item message-list__item--${message.author}`} key={index}>{message.message}</li>
+          (message, index) => {
+            if (message.message.startsWith('data:')){
+              return (
+                <li key={index} className={`client-messages__item client-messages__item--${message.author}`}>
+                  <img alt="client drawing" 
+                      className={`message-list__item message-list__item--${message.author}`}
+                      onDoubleClick={() => openImageNewTab(message.message)} 
+                      src={message.message} />
+                </li>
+              )
+            } 
+            return (
+              <li className={`message-list__item message-list__item--${message.author}`} key={index}>{message.message}</li>
+            )
+          }
         )
       }
     }
@@ -65,6 +79,11 @@ export default class Conversation extends Component {
     // routes you back to admin panel
     function backToAdmin() {
       browserHistory.push('/admin')
+    }
+
+    function openImageNewTab(url){
+      var win = window.open(url, '_blank');
+      win.focus();
     }
 
   return (
