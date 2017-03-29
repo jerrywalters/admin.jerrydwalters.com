@@ -1,0 +1,74 @@
+.sidebar {
+    height: calc(100vh - 40px);
+    background-color: #efefff;
+    width: 260px;
+    z-index: 9;
+    overflow-y: scroll;
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+.sidebar-search {
+    padding: .5rem 1rem;
+    background-color: #ceffce;
+}
+.sidebar-search__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid indianred;
+    font-size: .9em;
+    padding-bottom: .2rem;
+}
+.sidebar-search__input:focus {
+    outline: none;
+}
+
+/* conversation list */
+.conversation-list {
+    display: flex;
+    flex-direction: column;
+}
+.conversation-item {
+    background-color: #2a7ecc;
+}
+.conversation-item__info {
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.conversation-item__name {
+    margin-left: .5rem;
+}
+.conversation-item__pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #e8f722;
+}
+.conversation-item__status {
+    position: absolute;
+    right: 10px;
+    content: '';
+    /*background-color: greenyellow;*/
+    /*border: 1px solid greenyellow;*/
+    height: 8px;
+    width: 8px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.conversation-item__status--online {
+     background-color: greenyellow;
+}
+.conversation-item__status--offline {
+     background-color: orangered;
+}
+.conversation-item__date {
+    margin-left: auto;
+}
+/* why am i so tired? */
+.conversation-item__message {
+    padding: .5rem 1rem;
+    background-color: #eaf5ff;
+}
