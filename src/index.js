@@ -1,9 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 import { configureStore } from './store';
-import './index.css';
 
 // db and auth
 import firebaseDb from './firebaseDb';
