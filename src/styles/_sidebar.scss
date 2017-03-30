@@ -10,11 +10,11 @@
     z-index: 9;
     overflow-y: scroll;
 }
-.sidebar::-webkit-scrollbar {
-    display: none;
-}
+// .sidebar::-webkit-scrollbar {
+//    margin-right: .1rem;
+// }
 .sidebar-search {
-    padding: .5rem 1rem;
+    padding: .5rem .75rem;
     background-color: #ceffce;
 }
 .sidebar-search__input {
@@ -33,7 +33,7 @@
 .conversation-list {
     display: flex;
     flex-direction: column;
-    padding: 1rem .75rem;
+    padding: 1rem 1rem;
 }
 .conversation-item {
     background-color: #BA004C;
