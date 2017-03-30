@@ -22,12 +22,6 @@ export default class Conversation extends Component {
     const { params, conversations, sendMessage, updateIsTyping } = this.props;
     const conversationId = params.id;
 
-    const isTypingClasses = classNames({
-      'client-messages__item--isTyping' : isTyping,
-      'client-messages__item--notTyping' :  !isTyping
-    })  
-
-
     function isUncleTyping() {
       if (isTypingTimeout !== undefined) clearTimeout(isTypingTimeout);
       updateIsTyping(conversationId, true);
@@ -46,6 +40,7 @@ export default class Conversation extends Component {
       if(typeof thisConversation !== "undefined") {
         var userName = thisConversation.name;
         var isTyping = thisConversation.clientIsTyping;
+        var isOnline = thisConversation.isNephewOnline;
         messageList = thisConversation.messages.map(
           (message, index) => {
             if (message.message.startsWith('data:')){
@@ -86,6 +81,18 @@ export default class Conversation extends Component {
       win.focus();
     }
 
+    const statusClasses = classNames({
+      'conversation-status__status' : true,
+      'conversation-item__status--online' : isOnline,
+      'conversation-item__status--offline' : !isOnline
+    })
+
+    const isTypingClasses = classNames({
+      'message-list__item--isTyping' : isTyping,
+      'message-list__item--notTyping' :  !isTyping
+    })  
+
+
   return (
     <div>
       <main className="admin-main">
@@ -93,6 +100,10 @@ export default class Conversation extends Component {
         <section className="conversation">
           <header className="conversation__header">
               <h3 className="user-name">{userName}</h3>
+              <div className="conversation-status">
+                <span className={statusClasses}></span>
+                <p className="conversation-status__text"> {isOnline ? 'online' : 'offline'} </p>
+              </div>
           </header>
           <ul className="message-list">
             {messageList}
@@ -101,7 +112,6 @@ export default class Conversation extends Component {
               <span></span>
               <span></span>
             </li>
-            typing: {isTyping ? 'typing' : 'not typing' }
           </ul>
           <form className ="chat-form" onSubmit={(e) => chatSubmit(e)}>
             <input className="chat-form__input" 

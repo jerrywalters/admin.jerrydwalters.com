@@ -1,7 +1,7 @@
 .sidebar {
     height: calc(100vh);
-    background-color: #7F264B;
-    background-color: #623D7F;
+    background-color: #4a2c60;
+    background-color: #623D7F;      
     // border-right: 1px solid #ccc;
     // -webkit-box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.1);
     // -moz-box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.1);
@@ -79,8 +79,8 @@
     transition: all 0.3s;
 }
 .conversation-item__status--online {
-     background-color: #2EFF7F;
-     box-shadow: 0 0 1px 1px #2EFF7F;
+     background-color: #0eea57;
+     box-shadow: 0 0 1px 1px #0eea57;
 }
 .conversation-item__status--offline {
      background-color: #ff0048;
@@ -90,9 +90,13 @@
     margin-left: auto;
 }
 /* why am i so tired? */
-.conversation-item__message {
-    padding: .75rem 2rem;
+.conversation-item__message-container {
+    padding: .5rem;
     background-color: #fff;
     border-radius: 0 0 4px 4px;
     font-size: 0.85em;
+}
+.conversation-item__message {
+    padding: .25rem .5rem;
+    // border-left: 1px solid #b55eff;
 }

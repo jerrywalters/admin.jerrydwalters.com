@@ -18,7 +18,11 @@ const ConversationList = ({conversations}) => {
     <div className="sidebar">
       <header className="admin-header">
         <h1 className="home-button" onClick={ () => backToAdmin()}>Portfolio Support</h1>
-        <button className="signout-button"onClick={()=>signOut()}>sign out</button>
+        <div className="signout-button"
+             onClick={()=>signOut()}
+             alt="sign out">
+            <i className="fa fa-sign-out" aria-hidden="true"></i>
+        </div>
       </header>
       <ul className="conversation-list">
         {convoList}

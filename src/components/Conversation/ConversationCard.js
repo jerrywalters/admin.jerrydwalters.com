@@ -28,8 +28,8 @@ const ConversationCard = ({conversation}) => {
         <h3 className="conversation-item__name">{userName}</h3>
         <span className={statusClasses}></span>
       </div>
-      <div className="conversation-item__message">
-          <p>{lastMessage}</p>
+      <div className="conversation-item__message-container">
+          <p className="conversation-item__message">{lastMessage}</p>
       </div>
     </li>
   )
