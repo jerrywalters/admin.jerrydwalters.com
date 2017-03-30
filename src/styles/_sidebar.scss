@@ -1,7 +1,8 @@
 .sidebar {
     height: calc(100vh - 40px);
-    background-color: #fff;
-    border-right: 1px solid #ccc;
+    background-color: #7F264B;
+    background-color: #623D7F;
+    // border-right: 1px solid #ccc;
     // -webkit-box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.1);
     // -moz-box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.1);
     // box-shadow: 2px 0 4px 1px rgba(0,0,0,0.1);
@@ -35,14 +36,18 @@
     padding: 1rem .75rem;
 }
 .conversation-item {
-    background-color: #a3f1cc;
+    background-color: #BA004C;
+    background-color: #A22EFF;
     margin-bottom: 1rem;
     border-radius: 4px;
-    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.4);
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     cursor: pointer;
     &:hover {
         transform: scale(1.04);
         transition: all 0.3s;
+        background-color: #CC0053;
+        background-color: #b55eff;
     }
 }
 .conversation-item__info {
@@ -53,12 +58,13 @@
 }
 .conversation-item__name {
     margin-left: .5rem;
+    color: #fff;
 }
 .conversation-item__pic {
     width: 30px;
     height: 30px;
     border-radius: 15px;
-    background-color: #e8f722;
+    background-color: #fff;
 }
 .conversation-item__status {
     position: absolute;
@@ -72,10 +78,12 @@
     transition: all 0.3s;
 }
 .conversation-item__status--online {
-     background-color: greenyellow;
+     background-color: #2EFF7F;
+     box-shadow: 0 0 1px 1px #2EFF7F;
 }
 .conversation-item__status--offline {
-     background-color: orangered;
+     background-color: #ff0048;
+     box-shadow: 0 0 1px 1px #ff0048;
 }
 .conversation-item__date {
     margin-left: auto;
@@ -85,4 +93,5 @@
     padding: .5rem 1rem;
     background-color: #fff;
     border-radius: 0 0 4px 4px;
+    font-size: 0.9em;
 }

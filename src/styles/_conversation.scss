@@ -19,7 +19,7 @@
     // box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
     border-bottom: 1px solid #ccc;
     position: relative;
-    z-index: 100;
+    z-index: 9;
 }
 .user-name {
     font-size: 1.1rem;
@@ -51,16 +51,26 @@
 .message-list__item--uncle {
     margin-left: auto;
     background-color: #5d00ff;
+    background-color: #BA46D2;
     color: #fff;
 }
 .message-list__item--client {
     margin-right: auto;
     background-color: #dedede;
 }
-.message-list__item--image {
-    background: #fff;
-    box-shadow: 2px 2px 8px 1px rgba(0,0,0,0.18);
-    border-radius: 6px;
-    margin-bottom: 1rem;
+.message-list__item--frame {
+    background: gold;
+    padding: 1rem;
     max-width: 70%;
+    margin-bottom: 1rem;
+    margin-right: auto;
+    box-shadow: -1px 1px 4px 1px goldenrod;
+}
+.message-list__item--image {
+    padding: 1rem;
+    box-shadow: inset 0px 0px 10px 2px rgba(0,0,0,0.25);
+    background: #fff;
+    // box-shadow: 2px 2px 8px 1px rgba(0,0,0,0.18);
+    // border-radius: 6px;  
+    // max-width: 70%;
 }

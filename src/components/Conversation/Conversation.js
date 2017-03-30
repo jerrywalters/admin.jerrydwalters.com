@@ -45,7 +45,7 @@ export default class Conversation extends Component {
           (message, index) => {
             if (message.message.startsWith('data:')){
               return (
-                <li key={index} className={`client-messages__item client-messages__item--${message.author}`}>
+                <li key={index} className={`client-messages__item message-list__item--frame client-messages__item--${message.author}`}>
                   <img alt="client drawing" 
                       className={`message-list__item--image message-list__item--${message.author}`}
                       onDoubleClick={() => openImageNewTab(message.message)} 
