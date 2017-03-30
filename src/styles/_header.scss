@@ -1,7 +1,7 @@
 .admin-header {
     width: 100%;
     height: 40px;
-    background-color: #c573e9;
+    background-color: #333;
     color: #fff;
     padding: 0 1rem;
     box-sizing: border-box;
@@ -10,6 +10,7 @@
 }
 .signout-button {
     margin-left: auto;
+    cursor: pointer;
 }
 .admin-main {
     display: flex;

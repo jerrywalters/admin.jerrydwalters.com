@@ -47,7 +47,7 @@ export default class Conversation extends Component {
               return (
                 <li key={index} className={`client-messages__item client-messages__item--${message.author}`}>
                   <img alt="client drawing" 
-                      className={`message-list__item message-list__item--${message.author}`}
+                      className={`message-list__item--image message-list__item--${message.author}`}
                       onDoubleClick={() => openImageNewTab(message.message)} 
                       src={message.message} />
                 </li>
@@ -89,14 +89,14 @@ export default class Conversation extends Component {
   return (
     <div>
       <header className="admin-header">
-          <h1>Admin Panel</h1>
+          <h1>Portfolio Support</h1>
           <button className="signout-button"onClick={()=>signOut()}>sign out</button>
       </header>
       <main className="admin-main">
         <ConversationListContainer />
         <section className="conversation">
           <header className="conversation__header">
-              <h3>{userName}</h3>
+              <h3 className="user-name">{userName}</h3>
           </header>
           <ul className="message-list">
             {messageList}

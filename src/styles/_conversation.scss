@@ -1,35 +1,47 @@
 .conversation {
-    width: calc(100% - 260px);
+    width: calc(100% - 300px);
     height: calc(100vh - 40px);
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .conversation__header {
-    height: 25px;
+    height: 50px;
     display: flex;
     align-items: center;
-    padding: 0 1rem;
-    background-color: deeppink;
+    padding: 0 2rem;
+    background-color: #fefefe;
     width: 100%;
-    color: #fff;
+    color: #555;
     box-sizing: border-box;
-    box-shadow: 0 1px 12px deeppink;
+    // -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+    // -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+    // box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #ccc;
     position: relative;
+    z-index: 100;
+}
+.user-name {
+    font-size: 1.1rem;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .message-list {
-    padding: 1rem 20%;
+    padding: 1.5rem 10%;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 110px);
+    width: 100%;
     box-sizing: border-box;
     overflow-y: scroll;
+    background: #f9f9f9;
 }
 .message-list::-webkit-scrollbar {
     display: none;
 }
 .message-list__item {
-    padding: .35rem 1rem;
+    padding: .5rem 1rem;
     margin-bottom: .8rem;
-    border-radius: 16px;
+    border-radius: 6px;
     max-width: 70%;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
@@ -38,10 +50,17 @@
 }
 .message-list__item--uncle {
     margin-left: auto;
-    background-color: #3F7CF7;
+    background-color: #5d00ff;
     color: #fff;
 }
 .message-list__item--client {
     margin-right: auto;
     background-color: #dedede;
+}
+.message-list__item--image {
+    background: #fff;
+    box-shadow: 2px 2px 8px 1px rgba(0,0,0,0.18);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    max-width: 70%;
 }

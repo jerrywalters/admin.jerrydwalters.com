@@ -1,7 +1,11 @@
 .sidebar {
     height: calc(100vh - 40px);
-    background-color: #efefff;
-    width: 260px;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    // -webkit-box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.1);
+    // -moz-box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.1);
+    // box-shadow: 2px 0 4px 1px rgba(0,0,0,0.1);
+    width: 300px;
     z-index: 9;
     overflow-y: scroll;
 }
@@ -28,9 +32,18 @@
 .conversation-list {
     display: flex;
     flex-direction: column;
+    padding: 1rem .75rem;
 }
 .conversation-item {
-    background-color: #2a7ecc;
+    background-color: #a3f1cc;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.04);
+        transition: all 0.3s;
+    }
 }
 .conversation-item__info {
     padding: .5rem 1rem;
@@ -70,5 +83,6 @@
 /* why am i so tired? */
 .conversation-item__message {
     padding: .5rem 1rem;
-    background-color: #eaf5ff;
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
 }
