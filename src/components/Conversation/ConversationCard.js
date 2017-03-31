@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 const ConversationCard = ({conversation}) => {
   const messages = conversation.messages[conversation.messages.length-1];
   const lastMessage = (typeof messages !== "undefined") ? messages.message : 'loading messages';
+  const truncMessage = lastMessage.substring(0, 70) + ' ...';
   const author = (typeof messages !== "undefined") ? messages.author : 'loading author';
   const conversationId = conversation.conversationId;
   const userName = conversation.name;
@@ -29,7 +30,7 @@ const ConversationCard = ({conversation}) => {
         <span className={statusClasses}></span>
       </div>
       <div className="conversation-item__message-container">
-          <p className="conversation-item__message">{lastMessage}</p>
+          <p className="conversation-item__message">{truncMessage.startsWith('data:') ? `${userName} sent you a drawing!` : truncMessage}</p>
       </div>
     </li>
   )

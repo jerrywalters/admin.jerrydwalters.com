@@ -22,12 +22,57 @@ export default class Conversation extends Component {
     const { params, conversations, sendMessage, updateIsTyping } = this.props;
     const conversationId = params.id;
 
+    // helper functions for form
     function isUncleTyping() {
       if (isTypingTimeout !== undefined) clearTimeout(isTypingTimeout);
+
       updateIsTyping(conversationId, true);
       isTypingTimeout = setTimeout(function() {
         updateIsTyping(conversationId, false);
       }, 3000);
+    }
+
+    function formSubmit(inputText){
+      let text = inputText.trim();
+      if(!text || text === ' ') {
+      } else {
+        sendMessage(text, conversationId);
+        // tell client that you're not typing anymore so message doesn't stack
+        updateIsTyping(conversationId, false);
+        document.getElementById('chat__input').value = '';
+      }
+    }
+
+    // submit typing by hitting return key (because it's a texteditable div)
+    function handleTyping(e) {
+      const keyCode = e.keyCode;
+
+      if (keyCode === 13 && e.shiftKey) {
+      } else if (keyCode === 13) {
+        const input = document.getElementById('chat__input');
+        formSubmit(input.innerText);
+        input.innerHTML = '';
+        e.preventDefault();
+      }
+    }
+
+    // function chatSubmit(e){
+    //   e.preventDefault();
+    //   const input = document.getElementById('chat__input').value.trim();
+    //   if(!input) {
+    //     document.getElementById('chat__input').value = '';
+    //     return
+    //   } else {
+    //     sendMessage(input, conversationId);
+    //     // clearTimeout(isTypingTimeout)
+    //     updateIsTyping(conversationId, false);
+    //     document.getElementById('chat__input').value = '';
+    //   }
+    // }
+
+    function openImageNewTab(url){
+      var win = window.open(url, '_blank');
+      win.focus();
     }
 
 
@@ -60,27 +105,8 @@ export default class Conversation extends Component {
         )
       }
     }
-    // on submit push the value of the input as a message to db via sendMessage action
 
-    function chatSubmit(e){
-      e.preventDefault();
-      const input = document.getElementById('chat__input').value.trim();
-      if(!input) {
-        document.getElementById('chat__input').value = '';
-        return
-      } else {
-        sendMessage(input, conversationId);
-        // clearTimeout(isTypingTimeout)
-        updateIsTyping(conversationId, false);
-        document.getElementById('chat__input').value = '';
-      }
-    }
-
-    function openImageNewTab(url){
-      var win = window.open(url, '_blank');
-      win.focus();
-    }
-
+    // classes 
     const statusClasses = classNames({
       'conversation-status__status' : true,
       'conversation-item__status--online' : isOnline,
@@ -90,8 +116,7 @@ export default class Conversation extends Component {
     const isTypingClasses = classNames({
       'message-list__item--isTyping' : isTyping,
       'message-list__item--notTyping' :  !isTyping
-    })  
-
+    }) 
 
   return (
     <div>
@@ -113,13 +138,15 @@ export default class Conversation extends Component {
               <span></span>
             </li>
           </ul>
-          <form className ="chat-form" onSubmit={(e) => chatSubmit(e)}>
-            <input className="chat-form__input" 
-                   id="chat__input" 
+          <form className="chat-form">
+            <div className="chat-form__input" 
+                   id="chat__input"
+                   placeholder={`Message ${userName}`}
+                   contentEditable="true" 
                    type="text" 
-                   autoComplete="off" 
-                   onKeyPress={()=>isUncleTyping()}></input>
-            <input className="chat-form__submit" type="submit" ></input>
+                   onKeyDown={(e) => handleTyping(e)}
+                   onKeyPress={() => isUncleTyping()}>
+            </div>
           </form>
         </section>
       </ main>
