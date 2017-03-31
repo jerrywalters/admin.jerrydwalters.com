@@ -56,25 +56,10 @@ export default class Conversation extends Component {
       }
     }
 
-    // function chatSubmit(e){
-    //   e.preventDefault();
-    //   const input = document.getElementById('chat__input').value.trim();
-    //   if(!input) {
-    //     document.getElementById('chat__input').value = '';
-    //     return
-    //   } else {
-    //     sendMessage(input, conversationId);
-    //     // clearTimeout(isTypingTimeout)
-    //     updateIsTyping(conversationId, false);
-    //     document.getElementById('chat__input').value = '';
-    //   }
-    // }
-
     function openImageNewTab(url){
       var win = window.open(url, '_blank');
       win.focus();
     }
-
 
     let messageList = [];
     // conditional necessary because otherwise conversations is initially undefined, breaking it

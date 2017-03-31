@@ -1,15 +1,23 @@
 import firebaseDb from '../firebaseDb';
 
-export const SEND__MESSAGE = 'SEND__MESSAGE';
 export const ADD__CONVERSATION = 'ADD__CONVERSATION';
+export const UPDATE__CURRENT__CONVERSATION = 'UPDATE__CURRENT__CONVERSATION';
 export const ADD__MESSAGE__TO__CONVERSATION = 'ADD__MESSAGE__TO__CONVERSATION';
 export const UPDATE__CONVERSATION = 'UPDATE__CONVERSATION';
 export const UPDATE__IS__TYPING = 'UPDATE__IS__TYPING';
+export const SEND__MESSAGE = 'SEND__MESSAGE';
 
 export function addConversation(conversation) {
   return {
     type: ADD__CONVERSATION,
     conversation
+  }
+}
+
+export function updateCurrentConversation(currentConversation) {
+  return {
+    type: UPDATE__CURRENT__CONVERSATION,
+    currentConversation
   }
 }
 

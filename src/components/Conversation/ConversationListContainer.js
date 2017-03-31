@@ -3,7 +3,7 @@ import ConversationList from './ConversationList';
 
 const mapStateToProps = (state) => {
   return {
-    conversations: state.conversations
+    conversations: state.conversations,
   }
 }
 

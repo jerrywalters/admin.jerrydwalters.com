@@ -1,5 +1,6 @@
 const initialState = {
-  conversations: []
+  conversations: [],
+  currentConversation: ""
 }
 
 export default initialState

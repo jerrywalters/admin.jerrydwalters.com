@@ -1,13 +1,13 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
-import ConversationCard from './ConversationCard';
+import ConversationCard from './ConversationCardContainer';
 import { signOut } from '../../firebaseAuth';
 
-const ConversationList = ({conversations}) => {
+const ConversationList = ({conversations, currentConversation}) => {
 
   const convoList = conversations
-    .map((conversation, index) => <ConversationCard key={index} conversation={conversation}/>);
+    .map((conversation, index) => <ConversationCard key={index} conversation={conversation} currentConversation={currentConversation} />);
 
   // routes you back to admin panel
   function backToAdmin() {

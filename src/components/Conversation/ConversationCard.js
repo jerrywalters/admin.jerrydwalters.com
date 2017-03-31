@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { browserHistory } from 'react-router';
 
-const ConversationCard = ({conversation}) => {
+const ConversationCard = ({conversation, currentConversation, updateCurrentConversation}) => {
   const messages = conversation.messages[conversation.messages.length-1];
   const lastMessage = (typeof messages !== "undefined") ? messages.message : 'loading messages';
   const truncMessage = lastMessage.substring(0, 70) + ' ...';
@@ -18,12 +18,21 @@ const ConversationCard = ({conversation}) => {
     'conversation-item__status--offline' : !isOnline
   })
 
+  const cardClasses = classNames({
+    'conversation-item' : true,
+    'conversation-item--selected' : conversationId === currentConversation
+  })
+
   function navigateToConvo(id) {
     browserHistory.push(`/admin/conversations/${id}`);
   }
 
   return (
-    <li className="conversation-item" onClick={()=>navigateToConvo(conversationId)}>
+    <li className={cardClasses} 
+        onClick={()=> {
+          updateCurrentConversation(conversationId)
+          navigateToConvo(conversationId)
+        }}>
       <div className="conversation-item__info">
         <div className="conversation-item__pic"></div>
         <h3 className="conversation-item__name">{userName}</h3>

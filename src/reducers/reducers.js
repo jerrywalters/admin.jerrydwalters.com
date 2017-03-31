@@ -1,4 +1,9 @@
-import { ADD__CONVERSATION, ADD__MESSAGE__TO__CONVERSATION, UPDATE__CONVERSATION } from '../actions'
+import { 
+  ADD__CONVERSATION, 
+  ADD__MESSAGE__TO__CONVERSATION, 
+  UPDATE__CONVERSATION, 
+  UPDATE__CURRENT__CONVERSATION 
+} from '../actions'
 
 const rootReducer = (state = {}, action) => {
   switch (action.type) {
@@ -35,6 +40,10 @@ const rootReducer = (state = {}, action) => {
             }),
             ...state.conversations.slice(convoIndex + 1)
           ]
+        })
+      case UPDATE__CURRENT__CONVERSATION:
+        return Object.assign({}, state, {
+          currentConversation: action.currentConversation
         })
    default:
     return state;
