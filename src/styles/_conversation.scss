@@ -53,6 +53,7 @@
     width: 100%;
     box-sizing: border-box;
     overflow-y: scroll;
+    overflow-x: hidden;
     background: #f9f9f9;
 }
 // .message-list::-webkit-scrollbar {
@@ -119,6 +120,38 @@
     /*height: 0;
     width: 0;*/
     /*transition: all 0.3s;*/
+}
+
+.message-list::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+ // test to make scrollbar cooler
+ .message-list {
+    position: absolute;
+    right: 4px;
+    top: 45px;
+ }
+/* Track */
+.message-list::-webkit-scrollbar-track {
+    margin-right: 4px; 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #ededed;
+    right: 10px;
+}
+ 
+/* Handle */
+.message-list::-webkit-scrollbar-thumb {
+    width: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #ccc;
+    border-top: 2px solid #fefefe;
+    border-bottom: 2px solid #fefefe;
+}
+.message-list::-webkit-scrollbar-thumb:window-inactive {
+	background: #ccc;
 }
 
 /* isTyping animation */

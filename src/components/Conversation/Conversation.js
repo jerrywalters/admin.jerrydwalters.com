@@ -11,11 +11,26 @@ export default class Conversation extends Component {
     super(props)
   }
 
-  componentDidUpdate() {
+  scrollToBottom () {
     const messageList = document.getElementsByClassName('message-list');
+    // if(messageList) {
+    //   messageList[0].scrollTop = messageList[0].scrollHeight;
+    // }
     if(messageList) {
-      messageList[0].scrollTop = messageList[0].scrollHeight; 
-    }
+      messageList[0].scrollTop = messageList[0].scrollHeight;
+      // very slight delay here so scrollheight is set properly for images and isTyping
+      setTimeout(() => messageList[0].scrollTop = messageList[0].scrollHeight, 10)
+    } 
+  }
+
+  componentDidMount() {
+    // setTimeout(() => {
+      this.scrollToBottom();
+    // }, 100)
+  }
+  
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   render() {

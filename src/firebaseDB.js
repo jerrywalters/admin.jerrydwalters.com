@@ -25,8 +25,6 @@ db.ref('conversations').on('child_added', function(data) {
   // check for blank objects
   // without this admin would load blank conversations with 'isUncleOnline:true'
   if (typeof conversation.conversationId === 'undefined'){return;}
-
-  console.log('updating m')
   store.dispatch(addConversation(conversation));
 
   // add messages to conversations state via addMessageToConversation
