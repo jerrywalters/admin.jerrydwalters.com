@@ -5,12 +5,14 @@ import { browserHistory } from 'react-router';
 const ConversationCard = ({conversation, currentConversation, updateCurrentConversation}) => {
   const messages = conversation.messages[conversation.messages.length-1];
   const lastMessage = (typeof messages !== "undefined") ? messages.message : 'loading messages';
-  const truncMessage = lastMessage.substring(0, 70) + ' ...';
   const author = (typeof messages !== "undefined") ? messages.author : 'loading author';
   const conversationId = conversation.conversationId;
   const userName = conversation.name;
   const isOnline = conversation.isNephewOnline;
   const lastChatTime = new Date(conversation.lastChat).toString('yyyy-MM-dd');
+
+  let truncMessage = lastMessage.substring(0, 70);
+  lastMessage.length > 70 ? truncMessage += ' ...' : '';
 
   const statusClasses = classNames({
     'conversation-item__status' : true,
