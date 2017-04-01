@@ -2,8 +2,8 @@
     width: 300px;
     height: 44px;
     background-color: #623D7F;
-    // background-color: #4a2c60;
-    border-bottom: 1px solid #4a2c60;
+    background-color: #233c6b;
+    border-bottom: 1px solid #172E59;
     padding: 0 1rem;
     box-sizing: border-box;
     display: flex;
@@ -14,19 +14,18 @@
     z-index: 999;
     position: fixed;
     color: #c963dd;
-    transition: all 0.3s;
-    &:hover {
-       color: #e877ff;
-    }
+    color: #379BFF;
 }
 .signout-button {
     margin-left: auto;
     cursor: pointer;
     font-size: 1.2em;
     color: #c963dd;
+    color: #379BFF;
     transition: all 0.3s;
     &:hover {
        color: #e877ff;
+       color: #6AC1FF;
     }
 }
 .admin-main {
@@ -35,5 +34,10 @@
 }
 .home-button {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    transition: all 0.3s;
     cursor: pointer;
+    &:hover {
+       color: #e877ff;
+       color: #6AC1FF;
+    }
 }

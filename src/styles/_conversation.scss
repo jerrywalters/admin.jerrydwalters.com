@@ -71,8 +71,8 @@
 }
 .message-list__item--uncle {
     margin-left: auto;
-    background-color: #5d00ff;
     background-color: #BA46D2;
+    background-color: #379BFF;
     color: #fff;
 }
 .message-list__item--client {
@@ -83,8 +83,7 @@
     background: gold;
     padding: 1rem;
     max-width: 70%;
-    margin-bottom: 1rem;
-    margin-right: auto;
+    margin: .5rem auto 1rem 0;
     box-shadow: -1px 1px 4px 1px goldenrod;
 }
 .message-list__item--image {
