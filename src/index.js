@@ -11,6 +11,7 @@ import { isAuthenticated, requireAuth } from './firebaseAuth';
 // load up components for routes
 import App from './components/App/App';
 import SignIn from './components/SignIn/SignIn';
+import FailedAuth from './components/SignIn/FailedAuth';
 import Admin from './components/Admin/Admin';
 import ConversationListContainer from './components/Conversation/ConversationListContainer';
 import ConversationContainer from './components/Conversation/ConversationContainer';
@@ -24,6 +25,7 @@ render(
       <Route path='/' component={App}>
         <IndexRedirect to='signin' />
         <Route path='signin' component={SignIn} onEnter={isAuthenticated} />
+        <Route path='authentication-failed' component={FailedAuth} />
         <Route path='admin' component={Admin} onEnter={requireAuth}>
           <IndexRedirect to='conversations' />
           <Route path='conversations' component={ConversationListContainer} onEnter={requireAuth} />

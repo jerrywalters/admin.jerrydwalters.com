@@ -6,7 +6,12 @@ const provider = new firebase.auth.GoogleAuthProvider();
 // signs you in with google and then uses callback to push you to /admin
 export function signIn(callback) {
   firebase.auth().signInWithPopup(provider).then(function(result) {
-    callback(result)
+    let email = result.user.email;
+    if(email !== 'jerrydwalters@gmail.com') {
+      preventLogin();
+      callback(result);
+    }
+    callback(result) 
   });
 }
 
@@ -14,16 +19,26 @@ export function signIn(callback) {
 export function signOut() {
   firebase.auth().signOut().then(function() {
     browserHistory.push('/signin');
-}, function(error) {
-  // An error happened.
-});
+  }, function(error) {
+    // An error happened.
+  });
+}
+
+// not super secure but it does the part I care about
+function preventLogin() {
+  firebase.auth().signOut().then(function() {
+    // later make this push to alternate sign in page
+    browserHistory.push('/authentication-failed');
+  }, function(error) {
+    // An error happened.
+  });
 }
 
 export function requireAuth(nextState, replace, callback){
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      // User is signed in.
       callback();
+      // User is signed in.
     } else {
       replace('/signin');
       callback();
