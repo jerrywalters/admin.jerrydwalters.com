@@ -3,6 +3,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #fafafa;
@@ -21,13 +22,48 @@
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.3s;
+    margin-bottom: 2rem;
     &:hover {
         background-color: #3367D6;
         transform: scale(1.1);
         transition: all 0.3s;
     }
 }
-.sign-in__text {
+.sign-in__text-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.sign-in__heading {
+    text-align: center;
+}
+.sign-in__heading--primary {
+    font-size: 2em;
+    margin-bottom: 1rem;
+}
+.sign-in__heading--failed {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #e52256;
+}
+.sign-in__subtext {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #999;
+}
+.sign-in__link {
+    text-decoration: none;
+    color: #2C7CCC;
+    &:hover {
+        color: #379BFF;
+    }
+}
+.sign-in__button-text {
     margin-right: .9rem;
 }
 .google-logo__img {

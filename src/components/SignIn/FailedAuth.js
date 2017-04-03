@@ -12,15 +12,22 @@ const FailedAuth = () => {
   }
   return (
     <div className="failed-auth">
-      <h1> Whoops, you're not Jerry! </h1>
-      <p> Try messaging me on my <a href="http://www.jerrydwalters.com"> beautiful portfolio site </a> instead :^) </p>
-      <h2> or if you're me (you're not) then go ahead and try again </h2>
       <div className="sign-in">
+        <section className="sign-in__text-container">
+          <h1 className="sign-in__heading--failed"> Whoops, you're not Jerry! </h1>
+          <p className="sign-in__subtext"> 
+            You probably got here from my <a className="sign-in__link" href="http://www.jerrydwalters.com"> beautiful portfolio site </a>
+          </p>
+          <p className="sign-in__subtext"> 
+            Sorry for the false advertisement, but I can't have you logging in and seeing all of the conversations I had with myself trying to debug this thing -- there's far too much profanity :^)
+          </p>
+          <h2 className="sign-in__heading"> or if you are me (you're not) then go ahead and try that again </h2>
+        </ section>
         <button className="sign-in__button" onClick={()=>login()}>
           <div className="google-logo__container">
             <img className="google-logo__img" src={googleLogo} />
           </div>
-          <span className="sign-in__text">Sign in with Google</span>
+          <span className="sign-in__button-text">Sign in with Google</span>
         </button>
       </div>
     </div>
