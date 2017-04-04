@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="62px" height="61px" viewBox="0 0 62 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
     <title>box-icon</title>
     <desc>Created with Sketch.</desc>
@@ -12,7 +12,7 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Artboard" transform="translate(-136.000000, -305.000000)">
             <g id="box-icon" transform="translate(137.000000, 306.000000)">
-                <circle id="Oval-2" stroke="#000000" fill="#FFFFFF" cx="30" cy="30" r="30"></circle>
+                <path d="M32,59 C43.7199439,59 53,55 57,45 C61,35 60,34.8485986 60,30 C60,19.4578203 54.2236185,11.3503089 46,6 C37.7763815,0.649691113 36.0263628,0 30,0 C23.5188321,0 17.9049383,2.5057127 13,6 C5.36588991,11.4385545 0,19.9126254 0,30 C0,44.2073379 4.7386551,53.8965806 18,57 C31.2613449,60.1034194 29.6387954,59 32,59 Z" id="Oval-2" stroke="#000000" fill="#FFFFFF"></path>
                 <polygon id="Rectangle-3" fill="#FFECCF" points="9 22.9681818 27.1963196 13.7727273 46.5793558 15.0812799 46.5793558 39.0714115 35.107763 46.9227273 9 42.9970694"></polygon>
                 <g id="Group-4" transform="translate(10.652683, 13.000000)">
                     <use id="Rectangle" stroke="#000000" mask="url(#mask-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-1"></use>

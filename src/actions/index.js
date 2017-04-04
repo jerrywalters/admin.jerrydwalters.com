@@ -29,12 +29,13 @@ export function addMessageToConversation(message, lastChat) {
   }
 }
 
-export function updateConversation(conversationId, isNephewOnline, clientIsTyping) {
+export function updateConversation(conversationId, isNephewOnline, clientIsTyping, identity) {
   return {
     type: UPDATE__CONVERSATION,
     conversationId,
     isNephewOnline,
-    clientIsTyping
+    clientIsTyping,
+    identity
   }
 }
 

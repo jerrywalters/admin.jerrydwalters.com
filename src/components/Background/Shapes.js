@@ -57,8 +57,8 @@ const Shapes = () => {
         {
             height: 50,
             width: 'auto',
-            posX: getRandomInt(1, windowWidth-50),
-            posY: getRandomInt(1, windowHeight-50),
+            posX: getRandomInt(10, windowWidth-50),
+            posY: getRandomInt(10, windowHeight-70),
             transform: `rotate(${getRandomInt(-30, 30)}deg)`,
             // fucking lol at me being too lazy to just not make another function 
             opacity: .85

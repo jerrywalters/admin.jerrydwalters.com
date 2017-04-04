@@ -36,7 +36,8 @@ const rootReducer = (state = {}, action) => {
             ...state.conversations.slice(0, convoIndex),
             Object.assign({}, previousConversation, {
               isNephewOnline: action.isNephewOnline,
-              clientIsTyping: action.clientIsTyping
+              clientIsTyping: action.clientIsTyping,
+              identity: action.identity
             }),
             ...state.conversations.slice(convoIndex + 1)
           ]

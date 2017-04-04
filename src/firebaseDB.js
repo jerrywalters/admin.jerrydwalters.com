@@ -44,7 +44,8 @@ db.ref('conversations').on('child_changed', function(data) {
   let conversationId = conversation.conversationId;
   let isNephewOnline = conversation.isNephewOnline;
   let clientIsTyping = conversation.clientIsTyping;
-  store.dispatch(updateConversation(conversationId, isNephewOnline, clientIsTyping))
+  let identity = conversation.identity;
+  store.dispatch(updateConversation(conversationId, isNephewOnline, clientIsTyping, identity))
   checkOnline(conversationId);
 });
 
