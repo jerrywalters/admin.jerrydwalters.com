@@ -150,6 +150,8 @@ export default class Conversation extends Component {
           </form>
         </section>
       </ main>
+      <div className="bg-light">
+      </div>
     </div>
   )
   }
