@@ -84,8 +84,10 @@ export default class Conversation extends Component {
       const thisConversation = conversations[conversationPos];
       if(typeof thisConversation !== "undefined") {
         var userName = thisConversation.name;
+        var firstName = userName.split(" ")[0];
         var isTyping = thisConversation.clientIsTyping;
         var isOnline = thisConversation.isNephewOnline;
+
         messageList = thisConversation.messages.map(
           (message, index) => {
             if (message.message.startsWith('data:')){
@@ -141,7 +143,7 @@ export default class Conversation extends Component {
           <form className="chat-form">
             <div className="chat-form__input" 
                    id="chat__input"
-                   placeholder={`Message ${userName}`}
+                   placeholder={`Message ${firstName}`}
                    contentEditable="true" 
                    type="text" 
                    onKeyDown={(e) => handleTyping(e)}

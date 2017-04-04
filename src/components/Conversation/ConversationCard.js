@@ -11,14 +11,15 @@ import hands from '../../images/hands-icon.svg'
 import box from '../../images/box-icon.svg'
 
 const ConversationCard = ({conversation, currentConversation, updateCurrentConversation}) => {
-  const messages = conversation.messages[conversation.messages.length-1];
-  const lastMessage = (typeof messages !== "undefined") ? messages.message : 'loading messages';
-  const author = (typeof messages !== "undefined") ? messages.author : 'loading author';
   const conversationId = conversation.conversationId;
+  const messages = conversation.messages[conversation.messages.length-1];
+  // const author = (typeof messages !== "undefined") ? messages.author : 'loading author';
   const userName = conversation.name;
+  const firstName = userName.split(" ")[0];
   const isOnline = conversation.isNephewOnline;
   const lastChatTime = new Date(conversation.lastChat).toString('yyyy-MM-dd');
   const identity = conversation.identity;
+  const lastMessage = (typeof messages !== "undefined") ? messages.message : `${firstName} hasn't messaged you yet.`;
 
   let truncMessage = lastMessage.substring(0, 70);
   lastMessage.length > 70 ? truncMessage += ' ...' : '';
