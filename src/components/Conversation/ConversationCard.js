@@ -15,7 +15,7 @@ const ConversationCard = ({conversation, currentConversation, updateCurrentConve
   const messages = conversation.messages[conversation.messages.length-1];
   // const author = (typeof messages !== "undefined") ? messages.author : 'loading author';
   const userName = conversation.name;
-  const firstName = userName.split(" ")[0];
+  const firstName = (typeof userName !== "undefined") ? userName.split(" ")[0] : userName;
   const isOnline = conversation.isNephewOnline;
   const lastChatTime = new Date(conversation.lastChat).toString('yyyy-MM-dd');
   const identity = conversation.identity;

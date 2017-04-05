@@ -84,7 +84,7 @@ export default class Conversation extends Component {
       const thisConversation = conversations[conversationPos];
       if(typeof thisConversation !== "undefined") {
         var userName = thisConversation.name;
-        var firstName = userName.split(" ")[0];
+        var firstName = (typeof userName !== "undefined") ? userName.split(" ")[0] : userName;
         var isTyping = thisConversation.clientIsTyping;
         var isOnline = thisConversation.isNephewOnline;
 
