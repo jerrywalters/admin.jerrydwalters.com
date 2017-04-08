@@ -1,6 +1,6 @@
-import React from 'react';
-import classNames from 'classnames';
-import { browserHistory } from 'react-router';
+import React from 'react'
+import classNames from 'classnames'
+import { browserHistory } from 'react-router'
 
 // bring in icons
 import morty from '../../images/morty-icon.svg'

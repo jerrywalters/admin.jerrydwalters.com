@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import flower from '../../images/flower.svg'
 import morty from '../../images/morty.svg'
@@ -101,4 +101,4 @@ const Shapes = () => {
     )
 }
 
-export default Shapes;
+export default Shapes

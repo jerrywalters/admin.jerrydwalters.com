@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { sendMessage, updateIsTyping } from '../../actions/';
-import Conversation from './Conversation';
+import { connect } from 'react-redux'
+import { sendMessage, updateIsTyping } from '../../actions/'
+import Conversation from './Conversation'
 
 const mapStateToProps = (state) => {
   return {
@@ -24,4 +24,4 @@ const ConversationContainer = connect(
   mapDispatchToProps
 )(Conversation);
 
-export default ConversationContainer;
+export default ConversationContainer

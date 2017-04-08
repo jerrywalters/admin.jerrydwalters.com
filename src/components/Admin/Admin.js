@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Admin extends Component {
   render(props) {
@@ -10,4 +10,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default Admin

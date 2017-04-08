@@ -1,8 +1,8 @@
-import React from 'react';
-import { signIn } from '../../firebaseAuth';
+import React from 'react'
+import { signIn } from '../../firebaseAuth'
 import { browserHistory } from 'react-router'
 
-import googleLogo from '../../images/google_logo.svg';
+import googleLogo from '../../images/google_logo.svg'
 
 const FailedAuth = () => {
   function login(){
@@ -34,4 +34,4 @@ const FailedAuth = () => {
   )
 }
 
-export default FailedAuth;
+export default FailedAuth

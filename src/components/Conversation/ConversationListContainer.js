@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import ConversationList from './ConversationList';
-import { updateCurrentConversation } from '../../actions/';
+import { connect } from 'react-redux'
+import ConversationList from './ConversationList'
+import { updateCurrentConversation } from '../../actions/'
 
 const mapStateToProps = (state) => {
   return {
@@ -22,4 +22,4 @@ const ConversationListContainer = connect(
   mapDispatchToProps
 )(ConversationList);
 
-export default ConversationListContainer;
+export default ConversationListContainer

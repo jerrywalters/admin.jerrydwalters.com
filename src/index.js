@@ -1,20 +1,20 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
-import { configureStore } from './store';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router'
+import { configureStore } from './store'
 
 // db and auth
-import firebaseDb from './firebaseDb';
-import { isAuthenticated, requireAuth } from './firebaseAuth';
+import firebaseDb from './firebaseDb'
+import { isAuthenticated, requireAuth } from './firebaseAuth'
 
 // load up components for routes
-import App from './components/App/App';
-import SignIn from './components/SignIn/SignIn';
-import FailedAuth from './components/SignIn/FailedAuth';
-import Admin from './components/Admin/Admin';
-import ConversationListContainer from './components/Conversation/ConversationListContainer';
-import ConversationContainer from './components/Conversation/ConversationContainer';
+import App from './components/App/App'
+import SignIn from './components/SignIn/SignIn'
+import FailedAuth from './components/SignIn/FailedAuth'
+import Admin from './components/Admin/Admin'
+import ConversationListContainer from './components/Conversation/ConversationListContainer'
+import ConversationContainer from './components/Conversation/ConversationContainer'
 
 const store = configureStore();
 const mountApp = document.getElementById('root');

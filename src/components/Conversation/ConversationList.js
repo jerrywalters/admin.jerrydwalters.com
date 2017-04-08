@@ -1,8 +1,8 @@
-import React from 'react';
-import { browserHistory } from 'react-router';
+import React from 'react'
+import { browserHistory } from 'react-router'
 
-import ConversationCard from './ConversationCardContainer';
-import { signOut } from '../../firebaseAuth';
+import ConversationCard from './ConversationCardContainer'
+import { signOut } from '../../firebaseAuth'
 
 const ConversationList = ({conversations, currentConversation, updateCurrentConversation}) => {
 
@@ -37,4 +37,4 @@ const ConversationList = ({conversations, currentConversation, updateCurrentConv
   )
 }
 
-export default ConversationList;
+export default ConversationList

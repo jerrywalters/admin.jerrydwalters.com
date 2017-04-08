@@ -1,5 +1,5 @@
-import React from 'react';
-import { signIn } from '../../firebaseAuth';
+import React from 'react'
+import { signIn } from '../../firebaseAuth'
 import { browserHistory } from 'react-router'
 
 import googleLogo from '../../images/google_logo.svg';
@@ -25,4 +25,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn;
+export default SignIn
