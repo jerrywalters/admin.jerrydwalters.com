@@ -1,6 +1,6 @@
-import firebase from 'firebase';
-import { addNewMessage, addConversation, addMessageToConversation, updateConversation } from './actions';
-import store from './index';
+import firebase from 'firebase'
+import { addConversation, addMessageToConversation, updateConversation } from './actions'
+import store from './index'
 
 // Initialize Firebase
 const config = {
@@ -9,55 +9,55 @@ const config = {
   databaseURL: "https://portfolio-chat.firebaseio.com",
   storageBucket: "portfolio-chat.appspot.com",
   messagingSenderId: "892675563096"
-};
-firebase.initializeApp(config);
+}
+firebase.initializeApp(config)
 
 // db stuff
-const db = firebase.database();
+const db = firebase.database()
 
 // add conversations to state
 
 db.ref('conversations').on('child_added', function(data) {
-  const conversation = data.val();
-  const conversationId = conversation.conversationId;
+  const conversation = data.val()
+  const conversationId = conversation.conversationId
   // remind me to figure out why this is necessary
-  conversation.messages = [];
+  conversation.messages = []
   // check for blank objects
   // without this admin would load blank conversations with 'isUncleOnline:true'
-  if (typeof conversation.conversationId === 'undefined'){return;}
-  store.dispatch(addConversation(conversation));
+  if (typeof conversation.conversationId === 'undefined'){return}
+  store.dispatch(addConversation(conversation))
 
   // add messages to conversations state via addMessageToConversation
   db.ref('messages')
     .orderByChild('conversationId')
     .equalTo(conversationId)
     .on('child_added', function(data) {
-      const message = data.val();
-      const lastChat = Date.now();
-      store.dispatch(addMessageToConversation(message, lastChat));
-    });
-    checkOnline(conversationId);  
-});
+      const message = data.val()
+      const lastChat = Date.now()
+      store.dispatch(addMessageToConversation(message, lastChat))
+    })
+    checkOnline(conversationId)  
+})
 
 db.ref('conversations').on('child_changed', function(data) {
-  const conversation = data.val();
-  let conversationId = conversation.conversationId;
-  let isNephewOnline = conversation.isNephewOnline;
-  let clientIsTyping = conversation.clientIsTyping;
-  let identity = conversation.identity;
+  const conversation = data.val()
+  let conversationId = conversation.conversationId
+  let isNephewOnline = conversation.isNephewOnline
+  let clientIsTyping = conversation.clientIsTyping
+  let identity = conversation.identity
   store.dispatch(updateConversation(conversationId, isNephewOnline, clientIsTyping, identity))
-  checkOnline(conversationId);
-});
+  checkOnline(conversationId)
+})
 
 function checkOnline(conversationId) {
-  let convoRef = db.ref('conversations/' + conversationId);
+  let convoRef = db.ref('conversations/' + conversationId)
   convoRef.update({
     isUncleOnline: true
   })
   convoRef.onDisconnect().update({
     isUncleOnline: false
-  });
+  })
 }
 
 
-export default db;
+export default db

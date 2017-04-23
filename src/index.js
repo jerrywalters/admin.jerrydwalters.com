@@ -5,7 +5,6 @@ import { Router, Route, browserHistory, IndexRedirect } from 'react-router'
 import { configureStore } from './store'
 
 // db and auth
-import firebaseDb from './firebaseDb'
 import { isAuthenticated, requireAuth } from './firebaseAuth'
 
 // load up components for routes

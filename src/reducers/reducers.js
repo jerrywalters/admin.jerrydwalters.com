@@ -10,12 +10,12 @@ const rootReducer = (state = {}, action) => {
       case ADD__CONVERSATION:
         return Object.assign({}, state, {
           conversations: [...state.conversations, action.conversation]
-        });
+        })
       case ADD__MESSAGE__TO__CONVERSATION:
-        const msgConversationId = action.message.conversationId;
-        // is the conversations cnoversation id equal to ur message conversationId?
-        const conversationIndex = state.conversations.findIndex(conversation => conversation.conversationId === msgConversationId);
-        const prevConversation = state.conversations[conversationIndex];
+        const msgConversationId = action.message.conversationId
+        // is the conversations cnoversation id equal to your message conversationId?
+        const conversationIndex = state.conversations.findIndex(conversation => conversation.conversationId === msgConversationId)
+        const prevConversation = state.conversations[conversationIndex]
         return Object.assign({}, state, {
           conversations: [
             ...state.conversations.slice(0, conversationIndex),
@@ -25,12 +25,12 @@ const rootReducer = (state = {}, action) => {
             }),
             ...state.conversations.slice(conversationIndex + 1)
           ]
-        });
+        })
       case UPDATE__CONVERSATION:
-        // TODO: remind me to refactor this shit into a function after i get a remote job
-        const conversationId = action.conversationId;
-        const convoIndex = state.conversations.findIndex(conversation => conversation.conversationId === conversationId);
-        const previousConversation = state.conversations[convoIndex];
+        // TODO: remind me to refactor this shit into a function after I get a new job
+        const conversationId = action.conversationId
+        const convoIndex = state.conversations.findIndex(conversation => conversation.conversationId === conversationId)
+        const previousConversation = state.conversations[convoIndex]
         return Object.assign({}, state, {
           conversations: [
             ...state.conversations.slice(0, convoIndex),
@@ -47,8 +47,8 @@ const rootReducer = (state = {}, action) => {
           currentConversation: action.currentConversation
         })
    default:
-    return state;
+    return state
   }
 }
 
-export default rootReducer;
+export default rootReducer
