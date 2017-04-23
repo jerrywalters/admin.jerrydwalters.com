@@ -1,12 +1,20 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import _ from 'lodash'
 
 import ConversationCard from './ConversationCardContainer'
 import { signOut } from '../../firebaseAuth'
 
 const ConversationList = ({ conversations, currentConversation, updateCurrentConversation }) => {
 
-  const convoList = conversations
+  
+  // sort array of conversations from false to true for isOnline
+  // reverse order so online users show at top of list
+  // then create list to render in UI
+  const convoList = 
+    conversations
+    .sort((a, b) => a.isNephewOnline - b.isNephewOnline)
+    .reverse()
     .map((conversation, index) => <ConversationCard key={index} conversation={conversation} currentConversation={currentConversation} />)
 
   // routes you back to admin panel
