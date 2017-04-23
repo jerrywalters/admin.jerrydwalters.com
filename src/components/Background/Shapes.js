@@ -8,49 +8,49 @@ import box from '../../images/box.svg'
 import hands from '../../images/hands.svg'
 
 const Shapes = () => {
-    let shapes = [];
-    const shapeImgs = [flower, morty, moondog, lawnchair, box, hands];
-    let randomShape = shapeImgs[Math.floor(Math.random()*shapeImgs.length)];
-    // const shapeClasses = [];
+    const shapeImgs = [flower, morty, moondog, lawnchair, box, hands]
+    let shapes = []
+    let randomShape = shapeImgs[Math.floor(Math.random()*shapeImgs.length)]
+    // const shapeClasses = []
 
     function getRandomShape() {
-      randomShape = shapeImgs[Math.floor(Math.random()*shapeImgs.length)];
-      return randomShape;
+      randomShape = shapeImgs[Math.floor(Math.random()*shapeImgs.length)]
+      return randomShape
     }
 
     function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min)) + min;
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min)) + min
     }
 
     function setNumIterations(windowWidth) {
-      var numIterations;
+      var numIterations
       // if the expression evaluates to true, generate this number of shapes in the background
       switch(true) {
         case windowWidth > 1920: 
           return numIterations = 100
         case windowWidth > 1440:
           return numIterations = 80
-          // break;
+          // break
         case windowWidth > 1110:
           return numIterations = 60
-          // break;
+          // break
         case windowWidth > 800:
           return numIterations = 40
-          // break;
+          // break
         case windowWidth < 800:
           return numIterations = 30
-          // break;
+          // break
         default:
           return numIterations = 20
       }
     }
 
     function generateShapes() {
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-      let numI = setNumIterations(windowWidth);
+      const windowWidth = window.innerWidth
+      const windowHeight = window.innerHeight
+      let numI = setNumIterations(windowWidth)
 
       for(let i = 0; i <= numI; i++) {
         let newShape =       
@@ -67,33 +67,30 @@ const Shapes = () => {
       }
     }
 
-    generateShapes();
+    generateShapes()
     // window.addEventListener('resize', function () {
-    //   generateShapes();
-    // }, false);
+    //   generateShapes()
+    // }, false)
 
-    const generatedShapes = shapes.map(
-      (shape, index) => {
-        let imgStyles = {
-          height: `${shape.height}px`,
-          width: `${shape.width}px`,
-          transform: shape.transform,
-        }
-        let shapeStyles = {
-          height: `${shape.height}px`,
-          width: `${shape.width}px`,
-          top: `${shape.posY}px`,
-          left: `${shape.posX}px`,
-          position: 'absolute',
-          transform: shape.transform,
-          opacity: shape.opacity,
-          transition: 'all 1.5s'
-        }
-        return <div style={shapeStyles} key={index}><img style={imgStyles} src={getRandomShape()}></img></div>
+    const generatedShapes = shapes.map((shape, index) => {
+      let imgStyles = {
+        height: `${shape.height}px`,
+        width: `${shape.width}px`,
+        transform: shape.transform,
       }
-    )
+      let shapeStyles = {
+        height: `${shape.height}px`,
+        width: `${shape.width}px`,
+        top: `${shape.posY}px`,
+        left: `${shape.posX}px`,
+        position: 'absolute',
+        transform: shape.transform,
+        opacity: shape.opacity,
+        transition: 'all 1.5s'
+      }
+      return <div style={shapeStyles} key={index}><img style={imgStyles} src={getRandomShape()}></img></div>
+    })
     
-  
     return (
       <div id="shapes-container" className="shapes-container">
         { generatedShapes }
