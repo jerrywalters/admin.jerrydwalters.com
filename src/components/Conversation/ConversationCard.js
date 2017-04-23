@@ -11,18 +11,19 @@ import hands from '../../images/hands-icon.svg'
 import box from '../../images/box-icon.svg'
 
 const ConversationCard = ({conversation, currentConversation, updateCurrentConversation}) => {
-  const conversationId = conversation.conversationId;
-  const messages = conversation.messages[conversation.messages.length-1];
-  // const author = (typeof messages !== "undefined") ? messages.author : 'loading author';
-  const userName = conversation.name;
-  const firstName = (typeof userName !== "undefined") ? userName.split(" ")[0] : userName;
-  const isOnline = conversation.isNephewOnline;
-  const lastChatTime = new Date(conversation.lastChat).toString('yyyy-MM-dd');
-  const identity = conversation.identity;
-  const lastMessage = (typeof messages !== "undefined") ? messages.message : `${firstName} hasn't messaged you yet.`;
+  const conversationId = conversation.conversationId
+  const messages = conversation.messages[conversation.messages.length-1]
+  // const author = (typeof messages !== "undefined") ? messages.author : 'loading author'
+  const userName = conversation.name
+  const firstName = (typeof userName !== "undefined") ? userName.split(" ")[0] : userName
+  const isOnline = conversation.isNephewOnline
+  // TODO: add last chat time to conversation cards
+  const lastChatTime = new Date(conversation.lastChat).toString('yyyy-MM-dd')
+  const identity = conversation.identity
+  const lastMessage = (typeof messages !== "undefined") ? messages.message : `${firstName} hasn't messaged you yet.`
 
-  let truncMessage = lastMessage.substring(0, 70);
-  lastMessage.length > 70 ? truncMessage += ' ...' : '';
+  let truncMessage = lastMessage.substring(0, 70)
+  if (lastMessage.length > 70) truncMessage += ' ...'
 
   const statusClasses = classNames({
     'conversation-item__status' : true,
@@ -54,15 +55,13 @@ const ConversationCard = ({conversation, currentConversation, updateCurrentConve
     }
   }
 
-  console.log(getImg())
-
   function navigateToConvo(id) {
-    browserHistory.push(`/admin/conversations/${id}`);
+    browserHistory.push(`/admin/conversations/${id}`)
   }
 
   return (
     <li className={cardClasses} 
-        onClick={()=> {
+        onClick={() => {
           updateCurrentConversation(conversationId)
           navigateToConvo(conversationId)
         }}>

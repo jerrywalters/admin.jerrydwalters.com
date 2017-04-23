@@ -11,10 +11,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     sendMessage: (message, conversationId) => {
-      dispatch(sendMessage(message, conversationId));
+      dispatch(sendMessage(message, conversationId))
     },
     updateIsTyping: (conversationId, typing) => {
-      dispatch(updateIsTyping(conversationId, typing));
+      dispatch(updateIsTyping(conversationId, typing))
     }
   }
 }
@@ -22,6 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 const ConversationContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Conversation);
+)(Conversation)
 
 export default ConversationContainer

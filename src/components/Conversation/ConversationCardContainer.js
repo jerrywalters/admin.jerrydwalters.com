@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateCurrentConversation: (conversationId) => {
-      dispatch(updateCurrentConversation(conversationId));
+      dispatch(updateCurrentConversation(conversationId))
     }
   }
 }
@@ -19,6 +19,6 @@ const mapDispatchToProps = (dispatch) => {
 const ConversationCardContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConversationCard);
+)(ConversationCard)
 
 export default ConversationCardContainer

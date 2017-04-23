@@ -4,10 +4,10 @@ import { browserHistory } from 'react-router'
 import ConversationCard from './ConversationCardContainer'
 import { signOut } from '../../firebaseAuth'
 
-const ConversationList = ({conversations, currentConversation, updateCurrentConversation}) => {
+const ConversationList = ({ conversations, currentConversation, updateCurrentConversation }) => {
 
   const convoList = conversations
-    .map((conversation, index) => <ConversationCard key={index} conversation={conversation} currentConversation={currentConversation} />);
+    .map((conversation, index) => <ConversationCard key={index} conversation={conversation} currentConversation={currentConversation} />)
 
   // routes you back to admin panel
   function backToAdmin() {
@@ -18,12 +18,10 @@ const ConversationList = ({conversations, currentConversation, updateCurrentConv
     <div className="sidebar">
       <header className="admin-header">
         <h1 className="home-button" 
-            onClick={ 
-              () => {
+            onClick={() => {
                 updateCurrentConversation('')
                 backToAdmin()
-              }
-            }>Portfolio Support</h1>
+              }}>Portfolio Support</h1>
         <div className="signout-button"
              onClick={()=>signOut()}
              alt="sign out">

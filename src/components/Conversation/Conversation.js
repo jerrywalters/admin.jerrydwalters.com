@@ -7,10 +7,9 @@ import ConversationListContainer from './ConversationListContainer'
 var isTypingTimeout;
 
 export default class Conversation extends Component {
-  constructor(props){
-    super(props)
-  }
 
+  // the way i'm using class here isn't ideal. hard to reason about
+  // FIXTHIS: bloated class component
   scrollToBottom () {
     const messageList = document.getElementsByClassName('message-list');
     // if(messageList) {
@@ -47,7 +46,7 @@ export default class Conversation extends Component {
       }, 3000);
     }
 
-    function formSubmit(inputText){
+    function formSubmit(inputText) {
       let text = inputText.trim();
       if(!text || text === ' ') {
       } else {
@@ -64,47 +63,47 @@ export default class Conversation extends Component {
 
       if (keyCode === 13 && e.shiftKey) {
       } else if (keyCode === 13) {
-        const input = document.getElementById('chat__input');
-        formSubmit(input.innerText);
-        input.innerHTML = '';
-        e.preventDefault();
+          const input = document.getElementById('chat__input');
+          formSubmit(input.innerText);
+          input.innerHTML = '';
+          e.preventDefault();
       }
     }
 
     function openImageNewTab(url){
-      var win = window.open(url, '_blank');
+      const win = window.open(url, '_blank');
       win.focus();
     }
 
     let messageList = [];
-    // conditional necessary because otherwise conversations is initially undefined, breaking it
+    // this will break without this, but read more about typeof being unreliable with let and const
     if(typeof conversations !== "undefined") {
       // get the index of the conversation matching this convo id (found in route params)
       const conversationPos = conversations.findIndex(convo => convo.conversationId === conversationId );
       const thisConversation = conversations[conversationPos];
+      
       if(typeof thisConversation !== "undefined") {
+        // FIXTHIS: if I need to use var here to keep them from block scope, i'm doing something wrong
         var userName = thisConversation.name;
         var firstName = (typeof userName !== "undefined") ? userName.split(" ")[0] : userName;
         var isTyping = thisConversation.clientIsTyping;
         var isOnline = thisConversation.isNephewOnline;
 
-        messageList = thisConversation.messages.map(
-          (message, index) => {
-            if (message.message.startsWith('data:')){
-              return (
-                <li key={index} className={`client-messages__item message-list__item--frame client-messages__item--${message.author}`}>
-                  <img alt="client drawing" 
-                      className={`message-list__item--image message-list__item--${message.author}`}
-                      onDoubleClick={() => openImageNewTab(message.message)} 
-                      src={message.message} />
-                </li>
-              )
-            } 
+        messageList = thisConversation.messages.map((message, index) => {
+          if (message.message.startsWith('data:')) {
             return (
-              <li className={`message-list__item message-list__item--${message.author}`} key={index}>{message.message}</li>
+              <li key={index} className={`client-messages__item message-list__item--frame client-messages__item--${message.author}`}>
+                <img alt="client drawing" 
+                    className={`message-list__item--image message-list__item--${message.author}`}
+                    onDoubleClick={() => openImageNewTab(message.message)} 
+                    src={message.message} />
+              </li>
             )
-          }
-        )
+          } 
+          return (
+            <li className={`message-list__item message-list__item--${message.author}`} key={index}>{message.message}</li>
+          )
+        })
       }
     }
 
