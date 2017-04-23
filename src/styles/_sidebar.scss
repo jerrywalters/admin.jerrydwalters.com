@@ -58,6 +58,9 @@
     transition: all 0.3s;
     background-color: #379BFF;
 }
+.conversation-item--unread {
+    border: 1px solid red;
+}
 .conversation-item__info {
     padding: .1rem;
     height: 34px;

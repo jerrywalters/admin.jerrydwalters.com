@@ -10,16 +10,16 @@ import moondog from '../../images/moondog-icon.svg'
 import hands from '../../images/hands-icon.svg'
 import box from '../../images/box-icon.svg'
 
-const ConversationCard = ({conversation, currentConversation, updateCurrentConversation}) => {
-  const conversationId = conversation.conversationId
+const ConversationCard = ({conversation, currentConversation, updateCurrentConversation, updateRead}) => {
+  const { conversationId, identity, name, isNephewOnline, read } = conversation
+  // const conversationId = conversation.conversationId
+  // const name = conversation.name
+  // const isNephewOnline = conversation.isNephewOnline
+  // const identity = conversation.identity
   const messages = conversation.messages[conversation.messages.length-1]
-  // const author = (typeof messages !== "undefined") ? messages.author : 'loading author'
-  const userName = conversation.name
-  const firstName = (typeof userName !== "undefined") ? userName.split(" ")[0] : userName
-  const isOnline = conversation.isNephewOnline
+  const firstName = (typeof name !== "undefined") ? name.split(" ")[0] : name
   // TODO: add last chat time to conversation cards
   const lastChatTime = new Date(conversation.lastChat).toString('yyyy-MM-dd')
-  const identity = conversation.identity
   const lastMessage = (typeof messages !== "undefined") ? messages.message : `${firstName} hasn't messaged you yet.`
 
   let truncMessage = lastMessage.substring(0, 70)
@@ -27,13 +27,14 @@ const ConversationCard = ({conversation, currentConversation, updateCurrentConve
 
   const statusClasses = classNames({
     'conversation-item__status' : true,
-    'conversation-item__status--online' : isOnline,
-    'conversation-item__status--offline' : !isOnline
+    'conversation-item__status--online' : isNephewOnline,
+    'conversation-item__status--offline' : !isNephewOnline
   })
 
   const cardClasses = classNames({
     'conversation-item' : true,
-    'conversation-item--selected' : conversationId === currentConversation
+    'conversation-item--selected' : conversationId === currentConversation,
+    'conversation-item--unread' : !read
   })
 
   function getImg(identity) {
@@ -59,19 +60,23 @@ const ConversationCard = ({conversation, currentConversation, updateCurrentConve
     browserHistory.push(`/admin/conversations/${id}`)
   }
 
+  function handleCardClick() {
+    updateCurrentConversation(conversationId)
+    navigateToConvo(conversationId)
+  }
+
   return (
     <li className={cardClasses} 
         onClick={() => {
-          updateCurrentConversation(conversationId)
-          navigateToConvo(conversationId)
+          handleCardClick()
         }}>
       <div className="conversation-item__info">
         <img className="conversation-item__pic" alt="portrait" src={getImg(identity)} />
-        <h3 className="conversation-item__name">{userName}</h3>
+        <h3 className="conversation-item__name">{name}</h3>
         <span className={statusClasses}></span>
       </div>
       <div className="conversation-item__message-container">
-          <p className="conversation-item__message">{truncMessage.startsWith('data:') ? `${userName} sent you a drawing!` : truncMessage}</p>
+          <p className="conversation-item__message">{truncMessage.startsWith('data:') ? `${name} sent you a drawing!` : truncMessage}</p>
       </div>
     </li>
   )
