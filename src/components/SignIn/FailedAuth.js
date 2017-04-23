@@ -5,11 +5,11 @@ import { browserHistory } from 'react-router'
 import googleLogo from '../../images/google_logo.svg'
 
 const FailedAuth = () => {
-  function login(){
-    signIn(function(data){
-      browserHistory.push('/admin');
-    });
-  }
+
+  // function login() {
+  //   signIn(data => browserHistory.push('/admin'))
+  // }
+  
   return (
     <div className="failed-auth">
       <div className="sign-in">
@@ -23,9 +23,9 @@ const FailedAuth = () => {
           </p>
           <h2 className="sign-in__heading"> or if you are me (you're not) then go ahead and try that again </h2>
         </ section>
-        <button className="sign-in__button" onClick={()=>login()}>
+        <button className="sign-in__button" onClick={() => signIn(data => browserHistory.push('/admin'))}>
           <div className="google-logo__container">
-            <img className="google-logo__img" src={googleLogo} />
+            <img className="google-logo__img" src={googleLogo} alt='Google' />
           </div>
           <span className="sign-in__button-text">Sign in with Google</span>
         </button>
