@@ -37,9 +37,7 @@ db.ref('conversations')
       .on('child_added', (data) => {
         const message = data.val()
         const lastChat = Date.now()
-        const newMessage = true
         store.dispatch(addMessageToConversation(message, lastChat))
-        store.dispatch(updateNewMessage(conversationId, newMessage))
       })
     checkOnline(conversationId)  
 })
