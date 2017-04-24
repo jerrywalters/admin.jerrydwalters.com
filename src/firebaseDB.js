@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import { addConversation, addMessageToConversation, updateConversation } from './actions'
+import { addConversation, addMessageToConversation, updateConversation, updateNewMessage } from './actions'
 import store from './index'
 
 // Initialize Firebase
@@ -23,6 +23,8 @@ db.ref('conversations')
     const conversationId = conversation.conversationId
     // remind me to figure out why this is necessary
     conversation.messages = []
+    // conversation.adminNewMessage = true
+    conversation.clientNewMessage = true
     // check for blank objects
     // without this admin would load blank conversations with 'isUncleOnline:true'
     if (typeof conversation.conversationId === 'undefined'){return}
@@ -32,10 +34,12 @@ db.ref('conversations')
     db.ref('messages')
       .orderByChild('conversationId')
       .equalTo(conversationId)
-      .on('child_added', function(data) {
+      .on('child_added', (data) => {
         const message = data.val()
         const lastChat = Date.now()
+        const newMessage = true
         store.dispatch(addMessageToConversation(message, lastChat))
+        store.dispatch(updateNewMessage(conversationId, newMessage))
       })
     checkOnline(conversationId)  
 })
@@ -43,11 +47,13 @@ db.ref('conversations')
 db.ref('conversations')
   .on('child_changed', (data) => {
     const conversation = data.val()
-    let conversationId = conversation.conversationId
-    let isNephewOnline = conversation.isNephewOnline
-    let clientIsTyping = conversation.clientIsTyping
-    let identity = conversation.identity
-    store.dispatch(updateConversation(conversationId, isNephewOnline, clientIsTyping, identity))
+    let { conversationId, isNephewOnline, clientIsTyping, identity, adminNewMessage } = conversation
+    // let conversationId = conversation.conversationId
+    // let isNephewOnline = conversation.isNephewOnline
+    // let clientIsTyping = conversation.clientIsTyping
+    // let identity = conversation.identity
+    // let adminNewMessage = conversation.adminNewMessage
+    store.dispatch(updateConversation(conversationId, isNephewOnline, clientIsTyping, identity, adminNewMessage))
     checkOnline(conversationId)
 })
 

@@ -53,28 +53,29 @@ const rootReducer = (state = {}, action) => {
             Object.assign({}, previousConversation, {
               isNephewOnline: action.isNephewOnline,
               clientIsTyping: action.clientIsTyping,
-              identity: action.identity
+              identity: action.identity,
+              adminNewMessage: action.adminNewMessage
             }),
             ...state.conversations.slice(convoIndex + 1)
           ]
         })
       case UPDATE__CURRENT__CONVERSATION:
-        const readConversationId = action.currentConversation
-        const convoInd = state.conversations.findIndex(conversation => conversation.conversationId === readConversationId)
-        const preConversation = state.conversations[convoInd]
-        return Object.assign({}, state, {
-          currentConversation: action.currentConversation,
-          conversations: [
-            ...state.conversations.slice(0, convoInd),
-            Object.assign({}, preConversation, {
-              read: true
-            }),
-            ...state.conversations.slice(convoInd + 1)
-          ]
-        })
+        // const readConversationId = action.currentConversation
+        // const convoInd = state.conversations.findIndex(conversation => conversation.conversationId === readConversationId)
+        // const preConversation = state.conversations[convoInd]
         // return Object.assign({}, state, {
-        //   currentConversation: action.currentConversation
+        //   currentConversation: action.currentConversation,
+        //   conversations: [
+        //     ...state.conversations.slice(0, convoInd),
+        //     Object.assign({}, preConversation, {
+        //       read: true
+        //     }),
+        //     ...state.conversations.slice(convoInd + 1)
+        //   ]
         // })
+        return Object.assign({}, state, {
+          currentConversation: action.currentConversation
+        })
    default:
     return state
   }

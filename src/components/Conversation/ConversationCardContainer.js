@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import ConversationCard from './ConversationCard'
-import { updateCurrentConversation, updateRead } from '../../actions/'
+import { updateCurrentConversation, updateNewMessage } from '../../actions/'
 
 const mapStateToProps = (state) => {
   return {
@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => {
     updateCurrentConversation: (conversationId) => {
       dispatch(updateCurrentConversation(conversationId))
     },
-    updateRead: (conversation, read) => {
-      dispatch(updateRead(conversation, read))
+    updateNewMessage: (conversationId, newMessage) => {
+      dispatch(updateNewMessage(conversationId, newMessage))
     }
   }
 }

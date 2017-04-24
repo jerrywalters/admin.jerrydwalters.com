@@ -1,20 +1,12 @@
 import firebaseDb from '../firebaseDb'
 
-export const UPDATE__READ = 'UPDATE__READ'
+export const UPDATE__NEW__MESSAGE = 'UPDATE__NEW__MESSAGE'
 export const ADD__CONVERSATION = 'ADD__CONVERSATION'
 export const UPDATE__CURRENT__CONVERSATION = 'UPDATE__CURRENT__CONVERSATION'
 export const ADD__MESSAGE__TO__CONVERSATION = 'ADD__MESSAGE__TO__CONVERSATION'
 export const UPDATE__CONVERSATION = 'UPDATE__CONVERSATION'
 export const UPDATE__IS__TYPING = 'UPDATE__IS__TYPING'
 export const SEND__MESSAGE = 'SEND__MESSAGE'
-
-export function updateRead(conversation, read) {
-  return {
-    type: UPDATE__READ,
-    conversation,
-    read,
-  }
-}
 
 export function addConversation(conversation) {
   return {
@@ -38,13 +30,14 @@ export function addMessageToConversation(message, lastChat) {
   }
 }
 
-export function updateConversation(conversationId, isNephewOnline, clientIsTyping, identity) {
+export function updateConversation(conversationId, isNephewOnline, clientIsTyping, identity, adminNewMessage) {
   return {
     type: UPDATE__CONVERSATION,
     conversationId,
     isNephewOnline,
     clientIsTyping,
     identity,
+    adminNewMessage
   }
 }
 
@@ -54,6 +47,16 @@ export function updateIsTyping(conversationId, typing){
   })
   return {
     type: UPDATE__IS__TYPING,
+  }
+}
+
+export function updateNewMessage(conversationId, newMessage) {
+  let convoRef = firebaseDb.ref('conversations/' + conversationId)
+  convoRef.update({
+    adminNewMessage: newMessage
+  })
+  return {
+    type: UPDATE__NEW__MESSAGE
   }
 }
 

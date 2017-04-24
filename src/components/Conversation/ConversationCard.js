@@ -10,8 +10,8 @@ import moondog from '../../images/moondog-icon.svg'
 import hands from '../../images/hands-icon.svg'
 import box from '../../images/box-icon.svg'
 
-const ConversationCard = ({conversation, currentConversation, updateCurrentConversation, updateRead}) => {
-  const { conversationId, identity, name, isNephewOnline, read } = conversation
+const ConversationCard = ({ conversation, currentConversation, updateCurrentConversation, updateNewMessage }) => {
+  const { conversationId, identity, name, isNephewOnline, adminNewMessage } = conversation
   // const conversationId = conversation.conversationId
   // const name = conversation.name
   // const isNephewOnline = conversation.isNephewOnline
@@ -34,7 +34,7 @@ const ConversationCard = ({conversation, currentConversation, updateCurrentConve
   const cardClasses = classNames({
     'conversation-item' : true,
     'conversation-item--selected' : conversationId === currentConversation,
-    'conversation-item--unread' : !read
+    'conversation-item--unread' : adminNewMessage
   })
 
   function getImg(identity) {
@@ -61,6 +61,7 @@ const ConversationCard = ({conversation, currentConversation, updateCurrentConve
   }
 
   function handleCardClick() {
+    updateNewMessage(conversationId, false)
     updateCurrentConversation(conversationId)
     navigateToConvo(conversationId)
   }
