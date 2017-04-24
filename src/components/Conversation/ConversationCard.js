@@ -34,7 +34,12 @@ const ConversationCard = ({ conversation, currentConversation, updateCurrentConv
   const cardClasses = classNames({
     'conversation-item' : true,
     'conversation-item--selected' : conversationId === currentConversation,
-    'conversation-item--unread' : adminNewMessage
+    'conversation-item--unread' : adminNewMessage && conversationId !== currentConversation
+  })
+
+  const messageClasses = classNames({
+    'conversation-item__message-container' : true,
+    // 'conversation-item--unread' : adminNewMessage
   })
 
   function getImg(identity) {
@@ -76,7 +81,7 @@ const ConversationCard = ({ conversation, currentConversation, updateCurrentConv
         <h3 className="conversation-item__name">{name}</h3>
         <span className={statusClasses}></span>
       </div>
-      <div className="conversation-item__message-container">
+      <div className={messageClasses}>
           <p className="conversation-item__message">{truncMessage.startsWith('data:') ? `${name} sent you a drawing!` : truncMessage}</p>
       </div>
     </li>
