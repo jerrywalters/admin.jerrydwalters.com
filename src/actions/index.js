@@ -67,6 +67,9 @@ export function sendMessage(message, conversationId) {
     conversationId: conversationId,
     createdOn: Date.now(),
   }, () => console.log('message sent'))
+  firebaseDb.ref(`conversations/${conversationId}`).update({
+    clientNewMessage: true
+  })
   return {
     type: SEND__MESSAGE
   }

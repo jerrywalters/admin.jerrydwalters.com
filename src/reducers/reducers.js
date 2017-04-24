@@ -3,7 +3,7 @@ import {
   ADD__MESSAGE__TO__CONVERSATION, 
   UPDATE__CONVERSATION, 
   UPDATE__CURRENT__CONVERSATION,
-  UPDATE__READ
+  UPDATE__NEW__MESSAGE
 } from '../actions'
 
 // TODO: not DRY at all. Need to refactor these reducers to use an updateConversation function or something
@@ -38,7 +38,6 @@ const rootReducer = (state = {}, action) => {
             Object.assign({}, prevConversation, {
               messages: [...prevConversation.messages, action.message],
               lastChat: action.lastChat,
-              read: false
             }),
             ...state.conversations.slice(conversationIndex + 1)
           ]
