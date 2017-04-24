@@ -1,4 +1,4 @@
-import firebaseDb from '../firebaseDb'
+import firebaseDB from '../firebaseDB'
 
 export const UPDATE__NEW__MESSAGE = 'UPDATE__NEW__MESSAGE'
 export const ADD__CONVERSATION = 'ADD__CONVERSATION'
@@ -42,7 +42,7 @@ export function updateConversation(conversationId, isNephewOnline, clientIsTypin
 }
 
 export function updateIsTyping(conversationId, typing){
-  firebaseDb.ref(`conversations/${conversationId}`).update({
+  firebaseDB.ref(`conversations/${conversationId}`).update({
     uncleIsTyping: typing
   })
   return {
@@ -51,7 +51,7 @@ export function updateIsTyping(conversationId, typing){
 }
 
 export function updateNewMessage(conversationId, newMessage) {
-  let convoRef = firebaseDb.ref('conversations/' + conversationId)
+  let convoRef = firebaseDB.ref('conversations/' + conversationId)
   convoRef.update({
     adminNewMessage: newMessage
   })
@@ -61,13 +61,13 @@ export function updateNewMessage(conversationId, newMessage) {
 }
 
 export function sendMessage(message, conversationId) {
-  firebaseDb.ref('messages').push({
+  firebaseDB.ref('messages').push({
     message,
     author: 'uncle',
     conversationId: conversationId,
     createdOn: Date.now(),
   }, () => console.log('message sent'))
-  firebaseDb.ref(`conversations/${conversationId}`).update({
+  firebaseDB.ref(`conversations/${conversationId}`).update({
     clientNewMessage: true
   })
   return {
