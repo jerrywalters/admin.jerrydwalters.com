@@ -42,7 +42,7 @@
     // background-color: #A22EFF;
     background-color: #379BFF;
     margin-bottom: 1.1rem;
-    // border-radius: 4px;
+    border-radius: 2px;
     box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, 0.2);
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     cursor: pointer;
@@ -108,7 +108,7 @@
 .conversation-item__message-container {
     padding: .5rem;
     background-color: #fff;
-    // border-radius: 0 0 4px 4px;
+    border-radius: 0 0 2px 2px;
     font-size: 0.85em;
     max-height: 35px;
 }
